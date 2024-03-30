@@ -17,10 +17,10 @@ class APIService {
     }
     
     func fetchRankigsDrivers(completion: @escaping(ServiceRespons?, Error?) -> ()) {
-        let urlString = "https://v1.formula-1.api-sports.io/rankings/drivers?season=2023"
+        let urlString = "https://v1.formula-1.api-sports.io/rankings/drivers?season=2024"
         fetchDataGeneric(urlString: urlString, completion: completion)
     }
-    func fetchScheduleTrackRacing(idCompetition: Int,completion: @escaping(ServiceRespons?, Error?) -> ()) {
+    func fetchScheduleCompetition(idCompetition: Int,completion: @escaping(ServiceRespons?, Error?) -> ()) {
         let urlString = "https://v1.formula-1.api-sports.io/races?season=2024&competition=\(idCompetition)"
         fetchDataGeneric(urlString: urlString, completion: completion)
     }

@@ -13,14 +13,19 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
     var schedule = [Response]()
     let formatterDate = String()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        fetchDataScheduleRace()
+        //fetchDataScheduleRace()
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        /*guard let url = URL(string: "https://v1.formula-1.api-sports.io/races?season=2024&competition=2") else { return }
+        let now = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: now)
+        
+        print("year Current: ", year)
+        
+        guard let url = URL(string: "https://v1.formula-1.api-sports.io/rankings/drivers?season=2024") else { return }
          //https://v1.formula-1.api-sports.io/races?season=2024&competition=2
          //"https://v1.formula-1.api-sports.io/races?competition=1&season=2019&type=1st Practice"
          var request = URLRequest(url: url)
@@ -41,7 +46,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
          //completion(nil, error)
          }
          
-         }.resume()*/
+         }.resume()
         
     }
     
@@ -51,8 +56,6 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
     
     func configureCollectionView() {
         view.backgroundColor = .lightGray
-        let cellNib = UINib(nibName: "ScheduleCollectionCell", bundle: nil)
-        collectionView.register(cellNib.self, forCellWithReuseIdentifier: "scheduleCell")
         collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: sheduleCell)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -69,16 +72,29 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
     }
     
     func fetchDataScheduleRace() {
-        APIService().fetchScheduleRace { result, error in
+        APIService().fetchScheduleRace {[weak self] result, error in
             guard let result, error == nil else { return }
             
-            self.schedule = result.response ?? []
-            print("DATAAAA: ", self.schedule.count)
+            self?.schedule = result.response ?? []
+            print("DATAAAA: ", self?.schedule.count)
             DispatchQueue.main.async {
-                self.collectionView?.reloadData()
+                self?.collectionView?.reloadData()
             }
         }
     }
+    
+    /*func presentSheetSheduleDetail() {
+        let viewController = ScheduleDetailViewController()
+        //viewController.modalPresentationStyle = .fullScreen
+        
+        if let sheet = viewController.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
+        }
+        //self.navigationController?.pushViewController(viewController, animated: true)
+        self.present(viewController, animated: true, completion: nil)
+    }*/
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         schedule.count
@@ -95,19 +111,22 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        /*let appId = schedule[indexPath.item].competition?.id
-        print("Competition Id: ", appId)
-        //let viewController = SheduleDetailViewController()
-        viewController.appId = appId
-        //viewController.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(viewController, animated: true)
-        //self.present(viewController, animated: true, completion: nil)
-        viewController.navigationItem.title = schedule[indexPath.row].circuit?.name
-        self.tabBarController?.tabBar.isHidden = true*/
+        let competitionId = schedule[indexPath.item].competition?.id ?? 0
+        let sheduleDetail = ScheduleDetailViewController(competitionId: competitionId)
+        
+        if let sheet = sheduleDetail.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
+        }
+        //self.navigationController?.pushViewController(viewController, animated: true)
+        self.present(sheduleDetail, animated: true, completion: nil)
+        
+       // presentSheetSheduleDetail()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width - 50, height: 80)
+        return .init(width: view.frame.width - 50, height: 90)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 32

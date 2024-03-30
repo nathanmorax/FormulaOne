@@ -9,7 +9,7 @@ import UIKit
 
 class ScheduleCell: UICollectionViewCell {
     
-    let stack = UIStackView()
+    private let stack = UIStackView()
     let dateLabel = UILabel()
     let nameCircuitLabel = UILabel()
     let locationCircuitLabel = UILabel()
@@ -23,8 +23,6 @@ class ScheduleCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        //configure()
-        //constraint()
     }
     
     private func configure() {
@@ -38,13 +36,11 @@ class ScheduleCell: UICollectionViewCell {
         nameCircuitLabel.numberOfLines = 0
         nameCircuitLabel.font = .custom(style: .headline)
         
-        locationCircuitLabel.numberOfLines = 1
+        locationCircuitLabel.numberOfLines = 0
         locationCircuitLabel.font = .custom(style: .subheadline)
         
         stack.axis = .vertical
-        stack.distribution = .fillProportionally
-        stack.spacing = 8
-        
+       
     }
     
     private func constraint() {

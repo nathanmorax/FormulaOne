@@ -22,6 +22,8 @@
 		7CE071EF2BB79D990096DC28 /* UIStackView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071EE2BB79D990096DC28 /* UIStackView+Helpers.swift */; };
 		7CE071F12BB79FD10096DC28 /* DateFormatter+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F02BB79FD10096DC28 /* DateFormatter+Helpers.swift */; };
 		7CE071F32BB7A3690096DC28 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F22BB7A3690096DC28 /* UIFont+Custom.swift */; };
+		7CE071F62BB7A86E0096DC28 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F52BB7A86E0096DC28 /* ScheduleDetailViewController.swift */; };
+		7CE071F82BB88CDD0096DC28 /* ScheduleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		7CE071EE2BB79D990096DC28 /* UIStackView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Helpers.swift"; sourceTree = "<group>"; };
 		7CE071F02BB79FD10096DC28 /* DateFormatter+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Helpers.swift"; sourceTree = "<group>"; };
 		7CE071F22BB7A3690096DC28 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
+		7CE071F52BB7A86E0096DC28 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
+		7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				7CE071DD2BB798630096DC28 /* ScheduleViewController.swift */,
+				7CE071F42BB7A8490096DC28 /* SheduleDetail */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				7CE071E92BB79A040096DC28 /* ScheduleCell.swift */,
+				7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */,
 			);
 			path = ScheduleCell;
 			sourceTree = "<group>";
@@ -148,6 +154,14 @@
 				7CE071F22BB7A3690096DC28 /* UIFont+Custom.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		7CE071F42BB7A8490096DC28 /* SheduleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				7CE071F52BB7A86E0096DC28 /* ScheduleDetailViewController.swift */,
+			);
+			path = SheduleDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,7 +240,9 @@
 				7CE071C62BB797350096DC28 /* AppDelegate.swift in Sources */,
 				7CE071DA2BB797E10096DC28 /* MainTabController.swift in Sources */,
 				7CE071DE2BB798630096DC28 /* ScheduleViewController.swift in Sources */,
+				7CE071F62BB7A86E0096DC28 /* ScheduleDetailViewController.swift in Sources */,
 				7CE071EA2BB79A040096DC28 /* ScheduleCell.swift in Sources */,
+				7CE071F82BB88CDD0096DC28 /* ScheduleDetailCell.swift in Sources */,
 				7CE071C82BB797350096DC28 /* SceneDelegate.swift in Sources */,
 				7CE071E12BB798D00096DC28 /* FormulaOne.swift in Sources */,
 				7CE071EF2BB79D990096DC28 /* UIStackView+Helpers.swift in Sources */,
