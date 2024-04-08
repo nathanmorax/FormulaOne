@@ -7,20 +7,6 @@
 
 import UIKit
 
-struct SheduleDetail {
-    let typeRace: String
-    let date: String
-    let status: String
-}
-
-var shedule = [SheduleDetail(typeRace: "Race", date: "2024-03-02T15:00:00+00:00", status: "Completed"),
-               SheduleDetail(typeRace: "1st Qualifying", date: "2024-03-01T16:00:00+00:00", status: "Completed"),
-               SheduleDetail(typeRace: "2nd Qualifying", date: "2024-03-01T16:22:00+00:00", status: "Completed"),
-               SheduleDetail(typeRace: "Race", date: "2024-03-02T15:00:00+00:00", status: "Completed"),
-               SheduleDetail(typeRace: "1st Qualifying", date: "2024-03-01T16:00:00+00:00", status: "Completed"),
-               SheduleDetail(typeRace: "2nd Qualifying", date: "2024-03-01T16:22:00+00:00", status: "Completed")]
-
-
 class ScheduleDetailViewController: BaseCollectionView, UICollectionViewDelegateFlowLayout {
     
     fileprivate let sheduleDetailCell = "cell"
@@ -47,11 +33,16 @@ class ScheduleDetailViewController: BaseCollectionView, UICollectionViewDelegate
     }
     
     private func configure() {
+        
         view.backgroundColor = .lightGray
         
         collectionView.register(ScheduleDetailCell.self, forCellWithReuseIdentifier: sheduleDetailCell)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        /*if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }*/
     }
     
     private func constraint() {
@@ -62,8 +53,8 @@ class ScheduleDetailViewController: BaseCollectionView, UICollectionViewDelegate
         
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: collectionView.topAnchor),
-            view.leftAnchor.constraint(equalTo: collectionView.leftAnchor),
-            view.rightAnchor.constraint(equalTo: collectionView.rightAnchor),
+            view.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
             view.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor),
         ])
     }
@@ -90,19 +81,17 @@ class ScheduleDetailViewController: BaseCollectionView, UICollectionViewDelegate
             cell.typeRaceLabel.text = sheduleCompetition[indexPath.item].type?.rawValue
             cell.dateLabel.text = formatterDate.convertDateFormat(inputDate: sheduleCompetition[indexPath.item].date ?? "")
             cell.statusLabel.text = sheduleCompetition[indexPath.item].status?.rawValue
-            cell.imageView.image =  UIImage(systemName: "rectangle.checkered")
+            //cell.imageView.image =  UIImage(systemName: "rectangle.checkered")
         }
         cell.backgroundColor = .secondarySystemBackground
         cell.layer.cornerRadius = 8
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width - 50, height: 90)
+        return .init(width: view.frame.width - 40, height: 60)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 32
+        return 0
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 4, left: 0, bottom: 4, right: 0)
-    }
+
 }

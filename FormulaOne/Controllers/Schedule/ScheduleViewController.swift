@@ -10,14 +10,16 @@ import UIKit
 class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLayout {
     
     fileprivate var sheduleCell = "cell"
+    let viewErrorAPI = UIView()
+    let labelEror = UILabel()
     var schedule = [Response]()
     let formatterDate = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollectionView()
-        //fetchDataScheduleRace()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        configure()
+        constraint()
+        fetchDataScheduleRace()
         
         let now = Date()
         let calendar = Calendar.current
@@ -25,7 +27,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
         
         print("year Current: ", year)
         
-        guard let url = URL(string: "https://v1.formula-1.api-sports.io/rankings/drivers?season=2024") else { return }
+        /*guard let url = URL(string: "https://v1.formula-1.api-sports.io/rankings/drivers?season=2024") else { return }
          //https://v1.formula-1.api-sports.io/races?season=2024&competition=2
          //"https://v1.formula-1.api-sports.io/races?competition=1&season=2019&type=1st Practice"
          var request = URLRequest(url: url)
@@ -46,7 +48,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
          //completion(nil, error)
          }
          
-         }.resume()
+         }.resume()*/
         
     }
     
@@ -54,13 +56,24 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    func configureCollectionView() {
+    private func configure() {
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        
         view.backgroundColor = .lightGray
+        
         collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: sheduleCell)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
+    
+    }
+    
+    private func constraint() {
+        
         view.addSubview(collectionView)
-        //self.collectionView = collectionView
+        self.collectionView = collectionView
         
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -71,12 +84,13 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
         ])
     }
     
-    func fetchDataScheduleRace() {
+    private func fetchDataScheduleRace() {
         APIService().fetchScheduleRace {[weak self] result, error in
             guard let result, error == nil else { return }
             
             self?.schedule = result.response ?? []
             print("DATAAAA: ", self?.schedule.count)
+    
             DispatchQueue.main.async {
                 self?.collectionView?.reloadData()
             }
@@ -103,19 +117,25 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: sheduleCell, for: indexPath)
         if let cell = cell as? ScheduleCell {
-            cell.nameCircuitLabel.text = schedule[indexPath.item].circuit?.name
-            cell.locationCircuitLabel.text = schedule[indexPath.item].competition?.location?.country
-            cell.dateLabel.text = formatterDate.convertDateFormat(inputDate: schedule[indexPath.item].date ?? "")
+            if let countryImage = CountryImage(rawValue: schedule[indexPath.item].competition?.location?.country ?? "") {
+                cell.countryImage.image = UIImage(named: countryImage.rawValue)
+                cell.locationCircuitLabel.text = schedule[indexPath.item].competition?.location?.country
+                cell.nameCircuitLabel.text = schedule[indexPath.item].circuit?.name
+                cell.dateLabel.text = formatterDate.convertDateFormat(inputDate: schedule[indexPath.item].date ?? "")
+            } else { cell.countryImage.image = UIImage(systemName: "flag f1") }
+           
+            
         }
         cell.layer.cornerRadius = 8
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let competitionId = schedule[indexPath.item].competition?.id ?? 0
-        let sheduleDetail = ScheduleDetailViewController(competitionId: competitionId)
+        let sheduleDetail = ScheduleDetailController(competitionId: competitionId)
         
         if let sheet = sheduleDetail.sheetPresentationController {
-            sheet.detents = [.medium()]
+            sheet.detents = [ .custom { _ in return 500 }]
+            sheet.preferredCornerRadius = 10
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
         }
@@ -129,7 +149,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
         return .init(width: view.frame.width - 50, height: 90)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 32
+        return 22
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 8, left: 0, bottom: 8, right: 0)

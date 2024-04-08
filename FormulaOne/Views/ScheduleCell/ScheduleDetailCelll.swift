@@ -1,36 +1,29 @@
 //
-//  ScheduleDetailCell.swift
+//  ScheduleDetailCelll.swift
 //  FormulaOne
 //
-//  Created by Xcaret Mora on 30/03/24.
+//  Created by Xcaret Mora on 07/04/24.
 //
 
 import UIKit
 
-class ScheduleDetailCell: UITableViewCell {
+class ScheduleDetailCelll: UITableViewCell {
     
     private let stack = UIStackView()
     let typeRaceLabel = UILabel()
     let dateLabel = UILabel()
     let statusLabel = UILabel()
-    //let imageView = UIImageView()
-    
-    
-   /* override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-        constraint()
-        
-    }*/
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
         configure()
         constraint()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
     private func configure() {
@@ -67,8 +60,8 @@ class ScheduleDetailCell: UITableViewCell {
             statusLabel.leadingAnchor.constraint(equalTo: stack.trailingAnchor, constant: 24),
             statusLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
             statusLabel.heightAnchor.constraint(equalToConstant: 14),
-            statusLabel.widthAnchor.constraint(equalToConstant: 80),            
+            statusLabel.widthAnchor.constraint(equalToConstant: 80),
         ])
     }
-}
 
+}

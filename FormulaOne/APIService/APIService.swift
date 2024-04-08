@@ -11,20 +11,20 @@ class APIService {
     
     static let shared = APIService()
     
-    func fetchRankingsTeams(completion: @escaping(ServiceRespons?, Error?) ->()) {
+    func fetchRankingsTeams(completion: @escaping(ServiceResponse?, Error?) ->()) {
         let urlString = "https://v1.formula-1.api-sports.io/rankings/drivers?season=2023"
         fetchDataGeneric(urlString: urlString, completion: completion)
     }
     
-    func fetchRankigsDrivers(completion: @escaping(ServiceRespons?, Error?) -> ()) {
+    func fetchRankigsDrivers(completion: @escaping(ServiceResponse?, Error?) -> ()) {
         let urlString = "https://v1.formula-1.api-sports.io/rankings/drivers?season=2024"
         fetchDataGeneric(urlString: urlString, completion: completion)
     }
-    func fetchScheduleCompetition(idCompetition: Int,completion: @escaping(ServiceRespons?, Error?) -> ()) {
+    func fetchScheduleCompetition(idCompetition: Int,completion: @escaping(ServiceResponse?, Error?) -> ()) {
         let urlString = "https://v1.formula-1.api-sports.io/races?season=2024&competition=\(idCompetition)"
         fetchDataGeneric(urlString: urlString, completion: completion)
     }
-    func fetchScheduleRace(completion: @escaping(ServiceRespons?, Error?) -> ()) {
+    func fetchScheduleRace(completion: @escaping(ServiceResponse?, Error?) -> ()) {
         let urlString = "https://v1.formula-1.api-sports.io/races?season=2024&type=race"
         fetchDataGeneric(urlString: urlString, completion: completion)
     }

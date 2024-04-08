@@ -18,8 +18,8 @@ class MainTabController: UITabBarController {
     func setUpViewControllers() {
         viewControllers = [
             
-            createNavigationController(for: ScheduleViewController(), title: "Schedule", imageName: "flag.checkered.2.crossed"),
-            createNavigationController(for: UIViewController(), title: "Pilots", imageName: "house.fill"),
+            createNavigationController(for: ScheduleViewController(), title: "Schedule", imageName: "flag.checkered"),
+            createNavigationController(for: RacingDriverViewController(), title: "Pilots", imageName: "steeringwheel"),
         ]
     }
     

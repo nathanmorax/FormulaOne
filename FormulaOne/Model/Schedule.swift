@@ -1,5 +1,5 @@
 //
-//  FormulaOne.swift
+//  Schedule.swift
 //  FormulaOne
 //
 //  Created by Xcaret Mora on 29/03/24.
@@ -10,7 +10,7 @@ import Foundation
 // MARK: A mark comment lives here.
 
 // MARK: - Welcome
-struct ServiceRespons: Decodable {
+struct ServiceResponse: Decodable {
     let welcomeGet: String?
     let parameters: Parameters?
     let results: Int?
@@ -42,10 +42,18 @@ struct Response: Decodable {
     //let weather: JSONNull?
     let status: Status?
     
+    let position: Int?
+    let driver: Driver?
+    let team: Team?
+    let points: Int?
+    let wins: Int?
+    let behind: Int?
+    
     enum CodingKeys: String, CodingKey {
         case id, competition, circuit, season, type, laps
         case fastestLap = "fastest_lap"
         case distance, timezone, date, status
+        case position, driver, team, points, wins, behind
     }
 }
 
@@ -70,12 +78,21 @@ struct Location: Decodable {
 
 // MARK: - FastestLap
 struct FastestLap: Decodable {
-    let driver: Driver?
     //let time: JSONNull?
 }
 // MARK: - Driver
 struct Driver: Decodable {
-    //let id: JSONNull?
+    let id: Int
+    let name: String
+    let abbr: String?
+    let number: Int?
+    let image: String
+}
+// MARK: - Team
+struct Team: Decodable {
+    let id: Int
+    let name: String
+    let logo: String
 }
 
 // MARK: - Laps
@@ -88,6 +105,7 @@ enum Status: String, Decodable {
     case canceled = "Canceled"
     case scheduled = "Scheduled"
     case completed = "Completed"
+    case live = "Live"
 }
 
 enum Timezone: String, Decodable {
@@ -106,4 +124,30 @@ enum TypeEnum: String, Decodable {
     case the3RDPractice = "3rd Practice"
     case the3RDQualifying = "3rd Qualifying"
     case the3RDSprintShootout = "3rd Sprint Shootout"
+}
+
+
+enum CountryImage: String {
+    case mx = "Mexico"
+    case it = "Italy"
+    case nl = "Netherlands"
+    case at = "Austria"
+    case au = "Australia"
+    case az = "Azerbaijan"
+    case bh = "Bahrain"
+    case be = "Belgium"
+    case br = "Brazil"
+    case ca = "Canada"
+    case cn = "China"
+    case hu = "Hungary"
+    case jp = "Japan"
+    case mc = "Monaco"
+    case qa = "Qatar"
+    case sa = "Saudi Arabia"
+    case sg = "Singapore"
+    case es = "Spain"
+    case ae = "United Arab Emirates"
+    case gb = "United Kingdom"
+    case usa = "USA"
+    
 }

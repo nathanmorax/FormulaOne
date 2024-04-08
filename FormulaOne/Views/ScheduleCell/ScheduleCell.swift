@@ -10,7 +10,9 @@ import UIKit
 class ScheduleCell: UICollectionViewCell {
     
     private let stack = UIStackView()
+    private let separator = UIView()
     let dateLabel = UILabel()
+    let countryImage = UIImageView()
     let nameCircuitLabel = UILabel()
     let locationCircuitLabel = UILabel()
     
@@ -29,9 +31,9 @@ class ScheduleCell: UICollectionViewCell {
         
         backgroundColor = .systemGray6
         
-        dateLabel.numberOfLines = 0
-        dateLabel.font = .custom(style: .subheadline)
-        dateLabel.textAlignment = .center
+        separator.backgroundColor = .quaternaryLabel
+        
+        
         
         nameCircuitLabel.numberOfLines = 0
         nameCircuitLabel.font = .custom(style: .headline)
@@ -39,28 +41,39 @@ class ScheduleCell: UICollectionViewCell {
         locationCircuitLabel.numberOfLines = 0
         locationCircuitLabel.font = .custom(style: .subheadline)
         
+        dateLabel.numberOfLines = 0
+        dateLabel.font = .custom(style: .footnote)
+        dateLabel.textColor = .secondaryLabel
+        
         stack.axis = .vertical
+        stack.spacing = 4
        
     }
     
     private func constraint() {
         
-        addSubviews(dateLabel, stack)
-        stack.addArrangedSubviews(nameCircuitLabel, locationCircuitLabel)
+        addSubviews(countryImage, separator, stack)
+        stack.addArrangedSubviews(nameCircuitLabel, locationCircuitLabel, dateLabel)
         
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        countryImage.translatesAutoresizingMaskIntoConstraints = false
+        separator.translatesAutoresizingMaskIntoConstraints = false
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            dateLabel.widthAnchor.constraint(equalToConstant: 70),
-            dateLabel.heightAnchor.constraint(equalToConstant: 75),
+            countryImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            countryImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
+            countryImage.widthAnchor.constraint(equalToConstant: 60),
+            countryImage.heightAnchor.constraint(equalToConstant: 65),
+            
+            separator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            separator.leadingAnchor.constraint(equalTo: countryImage.trailingAnchor, constant: 18),
+            separator.heightAnchor.constraint(equalToConstant: 75),
+            separator.widthAnchor.constraint(equalToConstant: 1),
             
             stack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            stack.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 24),
+            stack.leadingAnchor.constraint(equalTo: separator.trailingAnchor, constant: 18),
             stack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stack.heightAnchor.constraint(equalToConstant: 50)
+            stack.heightAnchor.constraint(equalToConstant: 55)
             
         ])
     }
