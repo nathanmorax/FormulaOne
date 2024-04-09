@@ -9,10 +9,15 @@ import UIKit
 
 class ScheduleDetailHeaderCell: UITableViewCell {
 
-    private let stack = UIStackView()
+    private let stackLocation = UIStackView()
+    private let stackLength1 = UIStackView()
+    private let stackLength = UIStackView()
+    let titleCountryLabel = UILabel()
     let countryLabel = UILabel()
     let nameCircuitLabel = UILabel()
+    let titleLengthLabel = UILabel()
     let lenghtLabel = UILabel()
+    let kmLabel = UILabel()
     //let imageView = UIImageView()
     
     
@@ -35,32 +40,60 @@ class ScheduleDetailHeaderCell: UITableViewCell {
     
     private func configure() {
         
-        backgroundColor = .systemGray6
         
+        titleCountryLabel.text = "COUNTRY"
         countryLabel.font = .custom(style: .headline)
         nameCircuitLabel.font = .custom(style: .subheadline)
+        
+        titleLengthLabel.text = "LENGTH"
+        kmLabel.text = "Km"
         lenghtLabel.font = .custom(style: .subheadline)
         
         //imageView.tintColor = .green
         
-        stack.axis = .horizontal
-        stack.distribution = .fillProportionally
+        stackLocation.axis = .vertical
+        stackLocation.distribution = .fillEqually
+        
+        stackLength.axis = .vertical
+        stackLength.distribution = .fillEqually
+        
+        stackLength1.axis = .vertical
+        stackLength1.distribution = .fillEqually
+
+        
+
         
     }
     
     private func constraint() {
         
-        addSubviews(stack)
-        stack.addArrangedSubviews(countryLabel, nameCircuitLabel, lenghtLabel)
+        addSubviews(stackLocation, stackLength, stackLength1)
+        stackLocation.addArrangedSubviews(titleCountryLabel, countryLabel, nameCircuitLabel)
+        stackLength.addArrangedSubviews(titleLengthLabel, lenghtLabel, kmLabel)
+        stackLength1.addArrangedSubviews(titleLengthLabel, lenghtLabel, kmLabel)
         
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        stackLocation.translatesAutoresizingMaskIntoConstraints = false
+        stackLength.translatesAutoresizingMaskIntoConstraints = false
+        stackLength1.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
 
-            stack.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8),
-            stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            stack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 8),
-            stack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 8),
+            //stackLocation.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8),
+            stackLocation.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            stackLocation.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            stackLocation.heightAnchor.constraint(equalToConstant: 40),
+            stackLocation.trailingAnchor.constraint(equalTo: stackLength.leadingAnchor),
+            
+            //stackLength.centerYAnchor.constraint(equalTo: stackLocation.centerYAnchor, constant: 8),
+            stackLength.topAnchor.constraint(equalTo: self.stackLocation.topAnchor),
+            stackLength.leadingAnchor.constraint(equalTo: stackLocation.trailingAnchor),
+            stackLength.trailingAnchor.constraint(equalTo: stackLength1.leadingAnchor),
+            stackLength.heightAnchor.constraint(equalToConstant: 40),
+            
+            stackLength1.topAnchor.constraint(equalTo: self.stackLength.topAnchor),
+            stackLength1.leadingAnchor.constraint(equalTo: stackLength.trailingAnchor),
+            stackLength1.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            stackLength1.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 

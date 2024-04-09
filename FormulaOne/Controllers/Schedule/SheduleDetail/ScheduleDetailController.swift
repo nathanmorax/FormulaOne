@@ -43,8 +43,6 @@ class ScheduleDetailController: UIViewController {
         tableView.register(ScheduleDetailCell.self, forCellReuseIdentifier: sheduleDetailCell)
         tableView.register(ScheduleDetailHeaderCell.self, forCellReuseIdentifier: headerCell)
         
-        tableView.rowHeight = 55
-        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.backgroundColor = .systemBackground
         
         tableView.delegate = self

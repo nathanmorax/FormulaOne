@@ -44,7 +44,6 @@ class ScheduleDetailCell: UITableViewCell {
         //imageView.tintColor = .green
         
         stack.axis = .vertical
-        stack.spacing = 4
         
     }
     

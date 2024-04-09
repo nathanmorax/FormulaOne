@@ -134,7 +134,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
         let sheduleDetail = ScheduleDetailController(competitionId: competitionId)
         
         if let sheet = sheduleDetail.sheetPresentationController {
-            sheet.detents = [ .custom { _ in return 500 }]
+            sheet.detents = [ .custom { _ in return 550 }]
             sheet.preferredCornerRadius = 10
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
