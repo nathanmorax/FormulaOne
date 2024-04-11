@@ -33,8 +33,6 @@ class ScheduleCell: UICollectionViewCell {
         
         separator.backgroundColor = .quaternaryLabel
         
-        
-        
         nameCircuitLabel.numberOfLines = 0
         nameCircuitLabel.font = .custom(style: .headline)
         

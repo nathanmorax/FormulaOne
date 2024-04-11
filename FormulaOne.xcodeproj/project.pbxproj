@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BC20E722BC61AB90054BC2E /* DriverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */; };
+		0BC20E742BC630060054BC2E /* DriverHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */; };
+		0BE82FA12BC6447A00723155 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE82FA02BC6447A00723155 /* Driver.swift */; };
 		7C0D22A12BC2A6C5003486DC /* ScheduleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D22A02BC2A6C5003486DC /* ScheduleDetailController.swift */; };
 		7CA230872BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA230862BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift */; };
 		7CE071C62BB797350096DC28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071C52BB797350096DC28 /* AppDelegate.swift */; };
@@ -30,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailViewController.swift; sourceTree = "<group>"; };
+		0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverHeaderCell.swift; sourceTree = "<group>"; };
+		0BE82FA02BC6447A00723155 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		7C0D22A02BC2A6C5003486DC /* ScheduleDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailController.swift; sourceTree = "<group>"; };
 		7CA230862BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailHeaderCell.swift; sourceTree = "<group>"; };
 		7CE071C22BB797350096DC28 /* FormulaOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormulaOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BC20E702BC61A590054BC2E /* DriverDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */,
+			);
+			path = DriverDetail;
+			sourceTree = "<group>";
+		};
 		7CE071B92BB797350096DC28 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				7CE071E02BB798D00096DC28 /* Schedule.swift */,
+				0BE82FA02BC6447A00723155 /* Driver.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				7CE071C92BB797350096DC28 /* RacingDriverViewController.swift */,
+				0BC20E702BC61A590054BC2E /* DriverDetail */,
 			);
 			path = RacingDriver;
 			sourceTree = "<group>";
@@ -185,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				7CE41FBE2BBA1F7F00DDE7FF /* RacingDriverCell.swift */,
+				0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */,
 			);
 			path = RacingDriver;
 			sourceTree = "<group>";
@@ -261,6 +278,7 @@
 			files = (
 				7CA230872BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift in Sources */,
 				7CE071F32BB7A3690096DC28 /* UIFont+Custom.swift in Sources */,
+				0BC20E742BC630060054BC2E /* DriverHeaderCell.swift in Sources */,
 				7CE41FBF2BBA1F7F00DDE7FF /* RacingDriverCell.swift in Sources */,
 				7CE071ED2BB79D520096DC28 /* UIView+Helpers.swift in Sources */,
 				7CE071CA2BB797350096DC28 /* RacingDriverViewController.swift in Sources */,
@@ -273,10 +291,12 @@
 				7CE071C82BB797350096DC28 /* SceneDelegate.swift in Sources */,
 				7CE071E12BB798D00096DC28 /* Schedule.swift in Sources */,
 				7CE071EF2BB79D990096DC28 /* UIStackView+Helpers.swift in Sources */,
+				0BE82FA12BC6447A00723155 /* Driver.swift in Sources */,
 				7CE071E42BB799250096DC28 /* APIService.swift in Sources */,
 				7CE071F12BB79FD10096DC28 /* DateFormatter+Helpers.swift in Sources */,
 				7C0D22A12BC2A6C5003486DC /* ScheduleDetailController.swift in Sources */,
 				7CE071DC2BB7981C0096DC28 /* BaseCollectionView.swift in Sources */,
+				0BC20E722BC61AB90054BC2E /* DriverDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +447,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,6 +475,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

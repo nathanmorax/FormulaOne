@@ -36,6 +36,7 @@ class ScheduleDetailCell: UITableViewCell {
     private func configure() {
         
         backgroundColor = .systemGray6
+       
         
         typeRaceLabel.font = .custom(style: .headline)
         dateLabel.font = .custom(style: .subheadline)

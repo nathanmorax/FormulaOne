@@ -8,93 +8,98 @@
 import UIKit
 
 class ScheduleDetailHeaderCell: UITableViewCell {
-
-    private let stackLocation = UIStackView()
-    private let stackLength1 = UIStackView()
-    private let stackLength = UIStackView()
-    let titleCountryLabel = UILabel()
-    let countryLabel = UILabel()
-    let nameCircuitLabel = UILabel()
-    let titleLengthLabel = UILabel()
-    let lenghtLabel = UILabel()
-    let kmLabel = UILabel()
-    //let imageView = UIImageView()
-    
-    
+   
+   private let stackLocation = UIStackView()
+   private let stackLength1 = UIStackView()
+   private let stackLength = UIStackView()
+   private let separator = UIView()
+   let titleCountryLabel = UILabel()
+   let countryLabel = UILabel()
+   let cityLabel = UILabel()
+   let titleLengthLabel = UILabel()
+   let distanceLabel = UILabel()
+   let kmLabel = UILabel()
+   //let imageView = UIImageView()
+   
+   
    /* override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-        constraint()
-        
+    super.init(frame: frame)
+    configure()
+    constraint()
+    
     }*/
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
-        constraint()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func configure() {
-        
-        
-        titleCountryLabel.text = "COUNTRY"
-        countryLabel.font = .custom(style: .headline)
-        nameCircuitLabel.font = .custom(style: .subheadline)
-        
-        titleLengthLabel.text = "LENGTH"
-        kmLabel.text = "Km"
-        lenghtLabel.font = .custom(style: .subheadline)
-        
-        //imageView.tintColor = .green
-        
-        stackLocation.axis = .vertical
-        stackLocation.distribution = .fillEqually
-        
-        stackLength.axis = .vertical
-        stackLength.distribution = .fillEqually
-        
-        stackLength1.axis = .vertical
-        stackLength1.distribution = .fillEqually
+   
+   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+      super.init(style: style, reuseIdentifier: reuseIdentifier)
+      configure()
+      constraint()
+   }
+   
+   required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+   }
+   
+   private func configure() {
+      
+      backgroundColor = .lightGray
 
-        
+      titleCountryLabel.text = "COUNTRY"
+      countryLabel.font = .custom(style: .headline)
+      cityLabel.font = .custom(style: .subheadline)
+      
+      titleLengthLabel.text = "LENGTH"
+      kmLabel.text = " "
+      distanceLabel.font = .custom(style: .subheadline)
+      
+      separator.backgroundColor = .quaternaryLabel
+      
+      //imageView.tintColor = .green
+      
+      stackLocation.axis = .vertical
+      stackLocation.distribution = .fillProportionally
+      
+      stackLength.axis = .vertical
+      stackLength.distribution = .fillProportionally
 
-        
-    }
-    
-    private func constraint() {
-        
-        addSubviews(stackLocation, stackLength, stackLength1)
-        stackLocation.addArrangedSubviews(titleCountryLabel, countryLabel, nameCircuitLabel)
-        stackLength.addArrangedSubviews(titleLengthLabel, lenghtLabel, kmLabel)
-        stackLength1.addArrangedSubviews(titleLengthLabel, lenghtLabel, kmLabel)
-        
-        stackLocation.translatesAutoresizingMaskIntoConstraints = false
-        stackLength.translatesAutoresizingMaskIntoConstraints = false
-        stackLength1.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
+         
+   }
+   
+   private func constraint() {
+      
+      addSubviews(stackLocation, separator, stackLength)
+      stackLocation.addArrangedSubviews(titleCountryLabel, countryLabel, cityLabel)
+      stackLength.addArrangedSubviews(titleLengthLabel, distanceLabel, kmLabel)
+      
+      stackLocation.translatesAutoresizingMaskIntoConstraints = false
+      separator.translatesAutoresizingMaskIntoConstraints = false
+      stackLength.translatesAutoresizingMaskIntoConstraints = false
 
-            //stackLocation.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8),
-            stackLocation.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            stackLocation.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackLocation.heightAnchor.constraint(equalToConstant: 40),
-            stackLocation.trailingAnchor.constraint(equalTo: stackLength.leadingAnchor),
-            
-            //stackLength.centerYAnchor.constraint(equalTo: stackLocation.centerYAnchor, constant: 8),
-            stackLength.topAnchor.constraint(equalTo: self.stackLocation.topAnchor),
-            stackLength.leadingAnchor.constraint(equalTo: stackLocation.trailingAnchor),
-            stackLength.trailingAnchor.constraint(equalTo: stackLength1.leadingAnchor),
-            stackLength.heightAnchor.constraint(equalToConstant: 40),
-            
-            stackLength1.topAnchor.constraint(equalTo: self.stackLength.topAnchor),
-            stackLength1.leadingAnchor.constraint(equalTo: stackLength.trailingAnchor),
-            stackLength1.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackLength1.heightAnchor.constraint(equalToConstant: 40)
-        ])
-    }
+      
+      NSLayoutConstraint.activate([
+         
+         //stackLocation.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8),
+         //stackLocation.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+         stackLocation.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+         stackLocation.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+         stackLocation.heightAnchor.constraint(equalToConstant: 40),
+         //stackLocation.trailingAnchor.constraint(equalTo: stackLength.leadingAnchor),
+         
+         separator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+         separator.leadingAnchor.constraint(equalTo: stackLocation.trailingAnchor, constant: 8),
+         separator.heightAnchor.constraint(equalToConstant: 55),
+         separator.widthAnchor.constraint(equalToConstant: 1),
 
+         
+         stackLength.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+         //stackLength.topAnchor.constraint(equalTo: self.stackLocation.topAnchor),
+         stackLength.leadingAnchor.constraint(equalTo: separator.trailingAnchor),
+         stackLength.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+         stackLength.heightAnchor.constraint(equalToConstant: 40),
+         
+         //
+         
+        
+      ])
+   }
+   
 }
