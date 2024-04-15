@@ -5,7 +5,7 @@
 //  Created by Xcaret Mora on 29/03/24.
 //
 
-import Foundation
+import UIKit
 
 // MARK: A mark comment lives here.
 
@@ -82,54 +82,7 @@ struct Driver: Decodable {
    let number: Int?
    let image: String?
    
-
-   let nationality: String?
-   let country: Country?
-   let birthdate, birthplace: String?
-   let grandsPrixEntered, worldChampionships, podiums: Int?
-   let highestRaceFinish: HighestRaceFinish?
-   let highestGridPosition: Int?
-   let careerPoints: String?
-   let teams: [TeamElement]?
-
-   enum CodingKeys: String, CodingKey {
-       case id, name, abbr, image, nationality, country, birthdate, birthplace, number
-       case grandsPrixEntered = "grands_prix_entered"
-       case worldChampionships = "world_championships"
-       case podiums
-       case highestRaceFinish = "highest_race_finish"
-       case highestGridPosition = "highest_grid_position"
-       case careerPoints = "career_points"
-       case teams
-   }
-   
 }
-
-// MARK: - Country
-struct Country: Decodable {
-    let name, code: String?
-}
-
-// MARK: - HighestRaceFinish
-struct HighestRaceFinish: Decodable {
-    let position, number: Int?
-}
-
-// MARK: - TeamElement
-struct TeamElement: Decodable {
-    let season: Int?
-    let team: TeamTeam?
-}
-
-// MARK: - TeamTeam
-struct TeamTeam: Decodable {
-    let id: Int?
-    let name: String?
-    let logo: String?
-}
-
-
-
 // MARK: - Team
 struct Team: Decodable {
    let id: Int?
@@ -142,6 +95,7 @@ struct Laps: Decodable {
    //let current: JSONNull?
    let total: Int?
 }
+// MARK: - Status Laps
 
 enum Status: String, Decodable {
    case canceled = "Canceled"
@@ -153,7 +107,7 @@ enum Status: String, Decodable {
 enum Timezone: String, Decodable {
    case utc = "utc"
 }
-
+// MARK: - Type Race
 enum TypeEnum: String, Decodable {
    case race = "Race"
    case sprint = "Sprint"
@@ -167,8 +121,7 @@ enum TypeEnum: String, Decodable {
    case the3RDQualifying = "3rd Qualifying"
    case the3RDSprintShootout = "3rd Sprint Shootout"
 }
-
-
+// MARK: - Enum of image country
 enum CountryImage: String {
    case mx = "Mexico"
    case it = "Italy"
@@ -191,5 +144,20 @@ enum CountryImage: String {
    case ae = "United Arab Emirates"
    case gb = "United Kingdom"
    case usa = "USA"
-   
 }
+
+// MARK: - Tuple of Colors Team
+
+let teamColor: [(name: String, color: UIColor)] = [
+   ("Red Bull Racing", .systemBlue),
+   ("Scuderia Ferrari", .systemRed),
+   ("McLaren Racing", .orange),
+   ("Mercedes-AMG Petronas", .black),
+   ("Aston Martin F1 Team", .green),
+   ("Visa Cash App RB Formula One Team", .purple),
+   ("Haas F1 Team", .gray),
+   ("Williams F1 Team", .magenta),
+   ("Stake F1 Team Kick Sauber", .systemIndigo),
+   ("Alpine F1 Team", .cyan)
+]
+

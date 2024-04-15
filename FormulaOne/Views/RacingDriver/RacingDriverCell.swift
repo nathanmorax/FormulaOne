@@ -11,7 +11,7 @@ class RacingDriverCell: UITableViewCell {
    
    let stack = UIStackView()
    let positionDriverLabel = UILabel()
-   let imageDriver = UIImageView()
+   let view = UIView()
    let nameDriverLabel = UILabel()
    let pointsDriverLabel = UILabel()
    let teamLabel =  UILabel()
@@ -50,11 +50,11 @@ class RacingDriverCell: UITableViewCell {
    }
    
    private func constraint() {
-      addSubviews(positionDriverLabel,imageDriver, stack, pointsDriverLabel)
+      addSubviews(positionDriverLabel, view, stack, pointsDriverLabel)
       stack.addArrangedSubviews(nameDriverLabel, teamLabel)
       
       positionDriverLabel.translatesAutoresizingMaskIntoConstraints = false
-      imageDriver.translatesAutoresizingMaskIntoConstraints = false
+      view.translatesAutoresizingMaskIntoConstraints = false
       stack.translatesAutoresizingMaskIntoConstraints = false
       pointsDriverLabel.translatesAutoresizingMaskIntoConstraints = false
       
@@ -63,13 +63,13 @@ class RacingDriverCell: UITableViewCell {
          positionDriverLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
          positionDriverLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
          
-         imageDriver.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         imageDriver.leadingAnchor.constraint(equalTo: positionDriverLabel.leadingAnchor, constant: 18),
-         imageDriver.widthAnchor.constraint(equalToConstant: 30),
-         imageDriver.heightAnchor.constraint(equalToConstant: 35),
+         view.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+         view.leadingAnchor.constraint(equalTo: positionDriverLabel.leadingAnchor, constant: 18),
+         view.widthAnchor.constraint(equalToConstant: 2),
+         view.heightAnchor.constraint(equalToConstant: 35),
          
          stack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         stack.leadingAnchor.constraint(equalTo: imageDriver.trailingAnchor, constant: 18),
+         stack.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 18),
          stack.heightAnchor.constraint(equalToConstant: 30),
          stack.widthAnchor.constraint(equalToConstant: 180),
          

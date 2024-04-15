@@ -1,5 +1,5 @@
 // MARK: - Welcome
-/*struct WelcomeR: Decodable {
+struct WelcomeR: Decodable {
     let welcomeGet: String?
     let parameters: Parameterss?
     //let errors: [JSONAny]
@@ -19,14 +19,15 @@ struct Parameterss: Decodable {
 
 // MARK: - Response
 struct Drivers: Decodable {
-   let id: String?
+   let id: Int?
    let name: String?
    let abbr: String?
    let image: String?
+   let number: Int?
    let nationality: String?
    let country: Country?
    let birthdate, birthplace: String?
-   let number, grandsPrixEntered, worldChampionships, podiums: Int?
+   let grandsPrixEntered, worldChampionships, podiums: Int?
    let highestRaceFinish: HighestRaceFinish?
    let highestGridPosition: Int?
    let careerPoints: String?
@@ -65,4 +66,4 @@ struct TeamTeam: Decodable {
     let id: Int?
     let name: String?
     let logo: String?
-}*/
+}

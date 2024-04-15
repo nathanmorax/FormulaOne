@@ -73,8 +73,14 @@ extension RacingDriverViewController: UITableViewDelegate, UITableViewDataSource
       let cell = tableView.dequeueReusableCell(withIdentifier: tableViewcell, for: indexPath)
       if let cell = cell as? RacingDriverCell {
          
+         if let color = teamColor.first(where: { $0.name ==
+            driver[indexPath.row].team?.name
+         })?.color {
+            print("COloooor---", color)
+            cell.view.backgroundColor = color
+         }
+         
          cell.positionDriverLabel.text = driver[indexPath.row].position?.formatted()
-         cell.imageDriver.image = UIImage(named: "Mexico")
          cell.nameDriverLabel.text = driver[indexPath.row].driver?.name
          cell.teamLabel.text = driver[indexPath.row].team?.name
          cell.pointsDriverLabel.text = driver[indexPath.row].points?.formatted()

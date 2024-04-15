@@ -28,8 +28,7 @@ var shedule = [SheduleDetail(position: "1", name: "Max Verstappen", team: "Red B
 
 class DriverDetailViewController: BaseCollectionView, UICollectionViewDelegateFlowLayout {
    
-   var detailDriver: Response?
-   var dri = [Response]()
+   var detailDriver = [Drivers]()
    fileprivate var driverDetailCell = "cell"
    private var driverId: Int
    
@@ -74,31 +73,44 @@ class DriverDetailViewController: BaseCollectionView, UICollectionViewDelegateFl
    }
    
    private func fetchData() {
-      APIService.shared.fetchDriver(driverId: driverId) {[weak self] result, error in
+      
+      /*APIService.shared.fetchDriver(driverId: driverId) { result , error in
          guard let result, error == nil else { return }
-         let data = result.response?.first
-         detailDriver = data
-         print(self?.detailDriver.forEach({ re in
-            re.driver?.name
-         }))
+         
+         self.detailDriver = result.response?.first
+         print(self.detailDriver?.driver?.name)
+         
          DispatchQueue.main.async {
-            self?.collectionView.reloadData()
+            self.collectionView.reloadData()
+         }
+      }*/
+      
+      APIService.shared.fetchDriver(driverId: driverId) { result , error in
+         guard let result, error == nil else{ return }
+         self.detailDriver = result.response ?? []
+         
+         DispatchQueue.main.async {
+            self.collectionView.reloadData()
          }
       }
    }
    
    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 3
+      return detailDriver.count
    }
    
    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: driverDetailCell, for: indexPath)
       print("///-------------------////")
-      print(detailDriver?.driver?.name)
-      /*print(detailDriver[indexPath.item].abbr)
-      print(detailDriver[indexPath.item].nationality)
+      print(detailDriver[indexPath.item].name)
+      print(detailDriver[indexPath.item].abbr)
+      print(detailDriver[indexPath.item].birthplace)
       print(detailDriver[indexPath.item].podiums)
-      print(detailDriver[indexPath.item].birthplace)*/
+      print(detailDriver[indexPath.item].grandsPrixEntered)
+      print(detailDriver[indexPath.item].teams?.forEach({ resu in
+         resu.team?.name
+      }))
+
       return cell
    }
    

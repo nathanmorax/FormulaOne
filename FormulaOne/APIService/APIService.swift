@@ -16,7 +16,7 @@ class APIService {
       fetchDataGeneric(urlString: urlString, completion: completion)
    }
    
-   func fetchDriver(driverId: Int, completion: @escaping(ServiceResponse?, Error?) -> ()) {
+   func fetchDriver(driverId: Int, completion: @escaping(WelcomeR?, Error?) -> ()) {
       let urlString = "https://v1.formula-1.api-sports.io/drivers?id=\(driverId)"
       fetchDataGeneric(urlString: urlString, completion: completion)
    }

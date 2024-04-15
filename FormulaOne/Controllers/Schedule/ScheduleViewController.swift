@@ -94,19 +94,6 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
       }
    }
    
-   /*func presentSheetSheduleDetail() {
-    let viewController = ScheduleDetailViewController()
-    //viewController.modalPresentationStyle = .fullScreen
-    
-    if let sheet = viewController.sheetPresentationController {
-    sheet.detents = [.medium()]
-    sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-    sheet.prefersGrabberVisible = true
-    }
-    //self.navigationController?.pushViewController(viewController, animated: true)
-    self.present(viewController, animated: true, completion: nil)
-    }*/
-   
    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       schedule.count
    }

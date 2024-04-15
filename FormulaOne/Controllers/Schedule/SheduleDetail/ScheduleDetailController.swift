@@ -76,6 +76,7 @@ class ScheduleDetailController: UIViewController {
          self?.shedule = result.response?.first
          
          print("Dattos:", self?.sheduleCompetition.count)
+         
          DispatchQueue.main.async {
             self?.tableView.reloadData()
          }
