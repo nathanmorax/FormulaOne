@@ -10,6 +10,7 @@
 		0BC20E722BC61AB90054BC2E /* DriverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */; };
 		0BC20E742BC630060054BC2E /* DriverHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */; };
 		0BE82FA12BC6447A00723155 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE82FA02BC6447A00723155 /* Driver.swift */; };
+		52AA54676913DA888B6C5423 /* Pods_FormulaOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF334A89CB28845D22AAB9A2 /* Pods_FormulaOne.framework */; };
 		7C0D22A12BC2A6C5003486DC /* ScheduleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D22A02BC2A6C5003486DC /* ScheduleDetailController.swift */; };
 		7CA230872BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA230862BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift */; };
 		7CE071C62BB797350096DC28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071C52BB797350096DC28 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailViewController.swift; sourceTree = "<group>"; };
 		0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverHeaderCell.swift; sourceTree = "<group>"; };
 		0BE82FA02BC6447A00723155 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
+		4DDE1FFE08C981C05E48D838 /* Pods-FormulaOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormulaOne.release.xcconfig"; path = "Target Support Files/Pods-FormulaOne/Pods-FormulaOne.release.xcconfig"; sourceTree = "<group>"; };
 		7C0D22A02BC2A6C5003486DC /* ScheduleDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailController.swift; sourceTree = "<group>"; };
 		7CA230862BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailHeaderCell.swift; sourceTree = "<group>"; };
 		7CE071C22BB797350096DC28 /* FormulaOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormulaOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +60,8 @@
 		7CE071F52BB7A86E0096DC28 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailCell.swift; sourceTree = "<group>"; };
 		7CE41FBE2BBA1F7F00DDE7FF /* RacingDriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacingDriverCell.swift; sourceTree = "<group>"; };
+		AE2A5309CEBE4D82A85ADE78 /* Pods-FormulaOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormulaOne.debug.xcconfig"; path = "Target Support Files/Pods-FormulaOne/Pods-FormulaOne.debug.xcconfig"; sourceTree = "<group>"; };
+		DF334A89CB28845D22AAB9A2 /* Pods_FormulaOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormulaOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52AA54676913DA888B6C5423 /* Pods_FormulaOne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +89,8 @@
 			children = (
 				7CE071C42BB797350096DC28 /* FormulaOne */,
 				7CE071C32BB797350096DC28 /* Products */,
+				FA6A2F0E3BFE403ADD37C1B5 /* Pods */,
+				9814C15AF5A8E4F4B7AA8C33 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,6 +213,23 @@
 			path = RacingDriver;
 			sourceTree = "<group>";
 		};
+		9814C15AF5A8E4F4B7AA8C33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF334A89CB28845D22AAB9A2 /* Pods_FormulaOne.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA6A2F0E3BFE403ADD37C1B5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE2A5309CEBE4D82A85ADE78 /* Pods-FormulaOne.debug.xcconfig */,
+				4DDE1FFE08C981C05E48D838 /* Pods-FormulaOne.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,9 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CE071D62BB797370096DC28 /* Build configuration list for PBXNativeTarget "FormulaOne" */;
 			buildPhases = (
+				FD032ED8AA63A3C9378B47A4 /* [CP] Check Pods Manifest.lock */,
 				7CE071BE2BB797350096DC28 /* Sources */,
 				7CE071BF2BB797350096DC28 /* Frameworks */,
 				7CE071C02BB797350096DC28 /* Resources */,
+				40ED784CD3120161F69740C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -270,6 +296,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40ED784CD3120161F69740C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FormulaOne/Pods-FormulaOne-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FormulaOne/Pods-FormulaOne-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormulaOne/Pods-FormulaOne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD032ED8AA63A3C9378B47A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FormulaOne-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7CE071BE2BB797350096DC28 /* Sources */ = {
@@ -435,12 +503,14 @@
 		};
 		7CE071D72BB797370096DC28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE2A5309CEBE4D82A85ADE78 /* Pods-FormulaOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CWTM4F934;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FormulaOne/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -463,12 +533,14 @@
 		};
 		7CE071D82BB797370096DC28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DDE1FFE08C981C05E48D838 /* Pods-FormulaOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9CWTM4F934;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FormulaOne/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

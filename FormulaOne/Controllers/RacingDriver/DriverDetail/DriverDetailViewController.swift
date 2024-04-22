@@ -25,8 +25,12 @@ var shedule = [SheduleDetail(position: "1", name: "Max Verstappen", team: "Red B
                SheduleDetail(position: "9", name: "Lewis Hamilton", team: "Mercedes", points: "10")]
 
 
+import SDWebImage
+
 
 class DriverDetailViewController: BaseCollectionView, UICollectionViewDelegateFlowLayout {
+   
+   var racing = RacingDriverViewController()
    
    var detailDriver = [Drivers]()
    fileprivate var driverDetailCell = "cell"
@@ -50,9 +54,9 @@ class DriverDetailViewController: BaseCollectionView, UICollectionViewDelegateFl
 
    private func configure() {
       
-      view.backgroundColor = .brown
-      
-      collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: driverDetailCell)
+      navigationController?.navigationBar.prefersLargeTitles = false
+
+      collectionView.register(DriverHeaderCell.self, forCellWithReuseIdentifier: driverDetailCell)
       collectionView.delegate = self
       collectionView.dataSource = self
       
@@ -101,15 +105,18 @@ class DriverDetailViewController: BaseCollectionView, UICollectionViewDelegateFl
    
    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: driverDetailCell, for: indexPath)
-      print("///-------------------////")
-      print(detailDriver[indexPath.item].name)
-      print(detailDriver[indexPath.item].abbr)
-      print(detailDriver[indexPath.item].birthplace)
-      print(detailDriver[indexPath.item].podiums)
-      print(detailDriver[indexPath.item].grandsPrixEntered)
-      print(detailDriver[indexPath.item].teams?.forEach({ resu in
-         resu.team?.name
-      }))
+      if let cell = cell as? DriverHeaderCell {
+         
+         if let color = teamColor.first(where: { $0.name ==
+            detailDriver[indexPath.item].teams?[indexPath.item].team?.name
+         })?.color {
+            cell.backgroundColor = color
+         }
+         let url = URL(string: detailDriver[indexPath.item].image ?? "")
+         cell.image.sd_setImage(with: url)
+         cell.nameLabel.text = detailDriver[indexPath.item].name
+         cell.nationalityLabel.text = detailDriver[indexPath.item].nationality
+      }
 
       return cell
    }
