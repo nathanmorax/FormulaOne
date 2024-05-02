@@ -13,6 +13,24 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
    var schedule = [Response]()
    let formatterDate = String()
    
+   struct mockData {
+      let image: UIImage
+      let circuit: String
+      let city: String
+      let date: String
+   }
+   
+   var mock = [
+      mockData(image: UIImage(named: "Bahrain") ?? UIImage(), circuit: "JEDDAH CORNICHE CIRCUIT", city: "BAHRAIN", date: "mar. 2, 9:00 am"),
+      mockData(image: UIImage(named: "Bahrain") ?? UIImage(), circuit: "JEDDAH CORNICHE CIRCUIT", city: "BAHRAIN", date: "mar. 2, 9:00 am"),
+      mockData(image: UIImage(named: "Bahrain") ?? UIImage(), circuit: "JEDDAH CORNICHE CIRCUIT", city: "BAHRAIN", date: "mar. 2, 9:00 am"),
+      mockData(image: UIImage(named: "Bahrain") ?? UIImage(), circuit: "JEDDAH CORNICHE CIRCUIT", city: "BAHRAIN", date: "mar. 2, 9:00 am"),
+      mockData(image: UIImage(named: "Bahrain") ?? UIImage(), circuit: "JEDDAH CORNICHE CIRCUIT", city: "BAHRAIN", date: "mar. 2, 9:00 am"),
+      mockData(image: UIImage(named: "Bahrain") ?? UIImage(), circuit: "JEDDAH CORNICHE CIRCUIT", city: "BAHRAIN", date: "mar. 2, 9:00 am"),
+      mockData(image: UIImage(named: "Bahrain") ?? UIImage(), circuit: "JEDDAH CORNICHE CIRCUIT", city: "BAHRAIN", date: "mar. 2, 9:00 am"),
+      mockData(image: UIImage(named: "Bahrain") ?? UIImage(), circuit: "JEDDAH CORNICHE CIRCUIT", city: "BAHRAIN", date: "mar. 2, 9:00 am"),
+   ]
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       configure()
@@ -48,6 +66,12 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
        
        }.resume()*/
       
+      for familyName in UIFont.familyNames.sorted() {
+         print(familyName)
+         let fontNames  = UIFont.fontNames(forFamilyName: familyName)
+         print("--- \(fontNames)")
+      }
+      
    }
    
    override func viewDidAppear(_ animated: Bool) {
@@ -56,9 +80,14 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
    
    private func configure() {
       
-      navigationController?.navigationBar.prefersLargeTitles = true
+      view.backgroundColor = .secondarySystemBackground
+      collectionView.backgroundColor = .clear
       
-      view.backgroundColor = .lightGray
+      navigationController?.navigationBar.prefersLargeTitles = true
+
+      navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Superstcrea", size: 30)!]
+      navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Superstcrea", size: 24)!]
+      
       
       collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: sheduleCell)
       collectionView.delegate = self
@@ -101,16 +130,23 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: sheduleCell, for: indexPath)
       if let cell = cell as? ScheduleCell {
+         
+         
+         /*cell.countryImage.image = mock[indexPath.item].image
+         cell.nameCircuitLabel.text = mock[indexPath.item].circuit
+         cell.locationCircuitLabel.text = mock[indexPath.item].city
+         cell.dateLabel.text = mock[indexPath.item].date*/
+
          if let countryImage = CountryImage(rawValue: schedule[indexPath.item].competition?.location?.country ?? "") {
             cell.countryImage.image = UIImage(named: countryImage.rawValue)
-            cell.locationCircuitLabel.text = schedule[indexPath.item].competition?.location?.country
+            let uppercasedText = schedule[indexPath.item].competition?.location?.country
+            cell.locationCircuitLabel.text = uppercasedText?.uppercased()
             cell.nameCircuitLabel.text = schedule[indexPath.item].circuit?.name
             cell.dateLabel.text = formatterDate.convertDateFormat(inputDate: schedule[indexPath.item].date ?? "")
          } else { cell.countryImage.image = UIImage(systemName: "flag f1") }
          
-         
       }
-      cell.layer.cornerRadius = 8
+      cell.layer.cornerRadius = 9
       return cell
    }
    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -130,7 +166,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
    }
    
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return .init(width: view.frame.width - 50, height: 90)
+      return .init(width: view.frame.width - 50, height: 100)
    }
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
       return 22

@@ -41,64 +41,59 @@ class ScheduleDetailHeaderCell: UITableViewCell {
    
    private func configure() {
       
-      backgroundColor = .lightGray
+      backgroundColor = .clear
 
       titleCountryLabel.text = "COUNTRY"
-      countryLabel.font = .custom(style: .headline)
-      cityLabel.font = .custom(style: .subheadline)
+      titleCountryLabel.textColor = .black
+      titleCountryLabel.font = UIFont(name: "Superstcrea", size: 18)
+      
+      
+      countryLabel.font = UIFont(name: "Formula1-Display-Regular", size: 9)
+      cityLabel.font = UIFont(name: "Formula1-Display-Regular", size: 9)
       
       titleLengthLabel.text = "LENGTH"
+      titleLengthLabel.textColor = .black
+      titleLengthLabel.font = UIFont(name: "Superstcrea", size: 18)
       kmLabel.text = " "
-      distanceLabel.font = .custom(style: .subheadline)
+      distanceLabel.font = UIFont(name: "Formula1-Display-Regular", size: 9)
       
-      separator.backgroundColor = .quaternaryLabel
-      
-      //imageView.tintColor = .green
       
       stackLocation.axis = .vertical
-      stackLocation.distribution = .fillProportionally
+      stackLocation.backgroundColor = grayRetroColor
+      stackLocation.layer.cornerRadius = 8
+      stackLocation.layer.masksToBounds = true
+      
       
       stackLength.axis = .vertical
-      stackLength.distribution = .fillProportionally
+      stackLength.backgroundColor = grayRetroColor
+      stackLength.layer.cornerRadius = 8
+      stackLength.layer.masksToBounds = true
+
 
          
    }
    
    private func constraint() {
       
-      addSubviews(stackLocation, separator, stackLength)
+      addSubviews(stackLocation, stackLength)
       stackLocation.addArrangedSubviews(titleCountryLabel, countryLabel, cityLabel)
-      stackLength.addArrangedSubviews(titleLengthLabel, distanceLabel, kmLabel)
+      stackLength.addArrangedSubviews(titleLengthLabel, distanceLabel)
       
       stackLocation.translatesAutoresizingMaskIntoConstraints = false
-      separator.translatesAutoresizingMaskIntoConstraints = false
       stackLength.translatesAutoresizingMaskIntoConstraints = false
 
       
       NSLayoutConstraint.activate([
-         
-         //stackLocation.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 8),
-         //stackLocation.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
          stackLocation.centerYAnchor.constraint(equalTo: self.centerYAnchor),
          stackLocation.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
          stackLocation.heightAnchor.constraint(equalToConstant: 40),
-         //stackLocation.trailingAnchor.constraint(equalTo: stackLength.leadingAnchor),
-         
-         separator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         separator.leadingAnchor.constraint(equalTo: stackLocation.trailingAnchor, constant: 8),
-         separator.heightAnchor.constraint(equalToConstant: 55),
-         separator.widthAnchor.constraint(equalToConstant: 1),
-
+         stackLocation.trailingAnchor.constraint(equalTo: self.stackLength.leadingAnchor, constant: -84),
          
          stackLength.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         //stackLength.topAnchor.constraint(equalTo: self.stackLocation.topAnchor),
-         stackLength.leadingAnchor.constraint(equalTo: separator.trailingAnchor),
-         stackLength.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-         stackLength.heightAnchor.constraint(equalToConstant: 40),
-         
-         //
-         
-        
+         stackLength.leadingAnchor.constraint(equalTo: stackLocation.trailingAnchor),
+         stackLength.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+         stackLength.heightAnchor.constraint(equalToConstant: 50),
+
       ])
    }
    

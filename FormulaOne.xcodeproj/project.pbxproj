@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B7F57302BE1A8DA00291197 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F572F2BE1A8DA00291197 /* UIColor+Helpers.swift */; };
+		0B7F57322BE1B19100291197 /* Formula 1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F57312BE1B19100291197 /* Formula 1.ttf */; };
+		0B7F57382BE1DFFB00291197 /* super-star.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F57372BE1DFFB00291197 /* super-star.ttf */; };
+		0B7F573A2BE31BEB00291197 /* C&C Red Alert.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F57392BE31BEB00291197 /* C&C Red Alert.ttf */; };
+		0B7F573C2BE32F5C00291197 /* UIViewCell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F573B2BE32F5C00291197 /* UIViewCell+Helpers.swift */; };
 		0BC20E722BC61AB90054BC2E /* DriverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */; };
 		0BC20E742BC630060054BC2E /* DriverHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */; };
 		0BE82FA12BC6447A00723155 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE82FA02BC6447A00723155 /* Driver.swift */; };
@@ -27,13 +32,18 @@
 		7CE071ED2BB79D520096DC28 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071EC2BB79D520096DC28 /* UIView+Helpers.swift */; };
 		7CE071EF2BB79D990096DC28 /* UIStackView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071EE2BB79D990096DC28 /* UIStackView+Helpers.swift */; };
 		7CE071F12BB79FD10096DC28 /* DateFormatter+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F02BB79FD10096DC28 /* DateFormatter+Helpers.swift */; };
-		7CE071F32BB7A3690096DC28 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F22BB7A3690096DC28 /* UIFont+Custom.swift */; };
+		7CE071F32BB7A3690096DC28 /* UIFont+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F22BB7A3690096DC28 /* UIFont+Helpers.swift */; };
 		7CE071F62BB7A86E0096DC28 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F52BB7A86E0096DC28 /* ScheduleDetailViewController.swift */; };
 		7CE071F82BB88CDD0096DC28 /* ScheduleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */; };
 		7CE41FBF2BBA1F7F00DDE7FF /* RacingDriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE41FBE2BBA1F7F00DDE7FF /* RacingDriverCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B7F572F2BE1A8DA00291197 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
+		0B7F57312BE1B19100291197 /* Formula 1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula 1.ttf"; sourceTree = "<group>"; };
+		0B7F57372BE1DFFB00291197 /* super-star.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "super-star.ttf"; sourceTree = "<group>"; };
+		0B7F57392BE31BEB00291197 /* C&C Red Alert.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "C&C Red Alert.ttf"; sourceTree = "<group>"; };
+		0B7F573B2BE32F5C00291197 /* UIViewCell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewCell+Helpers.swift"; sourceTree = "<group>"; };
 		0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailViewController.swift; sourceTree = "<group>"; };
 		0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverHeaderCell.swift; sourceTree = "<group>"; };
 		0BE82FA02BC6447A00723155 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
@@ -56,7 +66,7 @@
 		7CE071EC2BB79D520096DC28 /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		7CE071EE2BB79D990096DC28 /* UIStackView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Helpers.swift"; sourceTree = "<group>"; };
 		7CE071F02BB79FD10096DC28 /* DateFormatter+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Helpers.swift"; sourceTree = "<group>"; };
-		7CE071F22BB7A3690096DC28 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
+		7CE071F22BB7A3690096DC28 /* UIFont+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Helpers.swift"; sourceTree = "<group>"; };
 		7CE071F52BB7A86E0096DC28 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailCell.swift; sourceTree = "<group>"; };
 		7CE41FBE2BBA1F7F00DDE7FF /* RacingDriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacingDriverCell.swift; sourceTree = "<group>"; };
@@ -76,6 +86,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B929C122BE1661A0017B933 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0B7F57372BE1DFFB00291197 /* super-star.ttf */,
+				0B7F57392BE31BEB00291197 /* C&C Red Alert.ttf */,
+				0B7F57312BE1B19100291197 /* Formula 1.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		0BC20E702BC61A590054BC2E /* DriverDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +125,7 @@
 		7CE071C42BB797350096DC28 /* FormulaOne */ = {
 			isa = PBXGroup;
 			children = (
+				0B929C122BE1661A0017B933 /* Fonts */,
 				7CE071EB2BB79D320096DC28 /* Extension */,
 				7CE071E62BB7995B0096DC28 /* Views */,
 				7CE071E52BB7994E0096DC28 /* Controllers */,
@@ -181,7 +202,9 @@
 				7CE071EC2BB79D520096DC28 /* UIView+Helpers.swift */,
 				7CE071EE2BB79D990096DC28 /* UIStackView+Helpers.swift */,
 				7CE071F02BB79FD10096DC28 /* DateFormatter+Helpers.swift */,
-				7CE071F22BB7A3690096DC28 /* UIFont+Custom.swift */,
+				7CE071F22BB7A3690096DC28 /* UIFont+Helpers.swift */,
+				0B7F572F2BE1A8DA00291197 /* UIColor+Helpers.swift */,
+				0B7F573B2BE32F5C00291197 /* UIViewCell+Helpers.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -291,7 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE071CF2BB797370096DC28 /* Assets.xcassets in Resources */,
+				0B7F57322BE1B19100291197 /* Formula 1.ttf in Resources */,
+				0B7F57382BE1DFFB00291197 /* super-star.ttf in Resources */,
 				7CE071D22BB797370096DC28 /* Base in Resources */,
+				0B7F573A2BE31BEB00291197 /* C&C Red Alert.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA230872BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift in Sources */,
-				7CE071F32BB7A3690096DC28 /* UIFont+Custom.swift in Sources */,
+				7CE071F32BB7A3690096DC28 /* UIFont+Helpers.swift in Sources */,
 				0BC20E742BC630060054BC2E /* DriverHeaderCell.swift in Sources */,
 				7CE41FBF2BBA1F7F00DDE7FF /* RacingDriverCell.swift in Sources */,
 				7CE071ED2BB79D520096DC28 /* UIView+Helpers.swift in Sources */,
@@ -361,6 +387,8 @@
 				7CE071EF2BB79D990096DC28 /* UIStackView+Helpers.swift in Sources */,
 				0BE82FA12BC6447A00723155 /* Driver.swift in Sources */,
 				7CE071E42BB799250096DC28 /* APIService.swift in Sources */,
+				0B7F573C2BE32F5C00291197 /* UIViewCell+Helpers.swift in Sources */,
+				0B7F57302BE1A8DA00291197 /* UIColor+Helpers.swift in Sources */,
 				7CE071F12BB79FD10096DC28 /* DateFormatter+Helpers.swift in Sources */,
 				7C0D22A12BC2A6C5003486DC /* ScheduleDetailController.swift in Sources */,
 				7CE071DC2BB7981C0096DC28 /* BaseCollectionView.swift in Sources */,

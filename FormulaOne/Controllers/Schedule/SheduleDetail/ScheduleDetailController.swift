@@ -25,6 +25,10 @@ class ScheduleDetailController: UIViewController {
       constraint()
       fetchData()
       
+      print("Pais", shedule?.competition?.location?.country)
+
+      print("Ciudad", shedule?.competition?.location?.city)
+      
    }
    
    init(competitionId: Int) {
@@ -38,15 +42,15 @@ class ScheduleDetailController: UIViewController {
    
    private func configure() {
       
-      view.backgroundColor = .lightGray
-      
-      
       tableView.register(ScheduleDetailCell.self, forCellReuseIdentifier: sheduleDetailCell)
       tableView.register(ScheduleDetailHeaderCell.self, forCellReuseIdentifier: headerCell)
       
       
       tableView.delegate = self
       tableView.dataSource = self
+      
+      tableView.layer.borderColor = UIColor.black.cgColor
+      tableView.layer.borderWidth = 1
       
       /*if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
        layout.scrollDirection = .horizontal
@@ -62,7 +66,7 @@ class ScheduleDetailController: UIViewController {
       tableView.estimatedRowHeight = UITableView.automaticDimension
       
       NSLayoutConstraint.activate([
-         view.topAnchor.constraint(equalTo: tableView.topAnchor),
+         view.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 24),
          view.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
          view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
          view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor),
@@ -75,7 +79,6 @@ class ScheduleDetailController: UIViewController {
          self?.sheduleCompetition = result.response ?? []
          self?.shedule = result.response?.first
          
-         print("Dattos:", self?.sheduleCompetition.count)
          
          DispatchQueue.main.async {
             self?.tableView.reloadData()
