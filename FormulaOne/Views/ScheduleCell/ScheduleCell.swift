@@ -40,16 +40,16 @@ class ScheduleCell: UICollectionViewCell {
       
       
       self.nameCircuitLabel.numberOfLines = 0
-      self.nameCircuitLabel.font = UIFont(name: "Superstcrea", size: 17)
-      self.nameCircuitLabel.textColor = yewllowColor
+      self.nameCircuitLabel.font = UIFont.customFontTitle(ofSize: 17)
+      self.nameCircuitLabel.textColor = .custom(style: .yellowRetroColor)
       
       self.locationCircuitLabel.numberOfLines = 0
       self.locationCircuitLabel.textColor = .white
-      self.locationCircuitLabel.font = UIFont(name: "C&CRedAlertINET", size: 14)
+      self.locationCircuitLabel.font = UIFont.customFontSubtitle(ofSize: 14)
       
       self.dateLabel.numberOfLines = 0
       self.dateLabel.textColor = .white
-      self.dateLabel.font = UIFont(name: "C&CRedAlertINET", size: 14)
+      self.dateLabel.font = UIFont.customFontSubtitle(ofSize: 14)
       
       self.stack.axis = .vertical
       self.stack.spacing = 4

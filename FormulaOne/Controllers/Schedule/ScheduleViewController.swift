@@ -33,6 +33,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      setupCustomNavigationBar()
       configure()
       constraint()
       fetchDataScheduleRace()
@@ -81,14 +82,8 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
    private func configure() {
       
       view.backgroundColor = .secondarySystemBackground
+      
       collectionView.backgroundColor = .clear
-      
-      navigationController?.navigationBar.prefersLargeTitles = true
-
-      navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Superstcrea", size: 30)!]
-      navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Superstcrea", size: 24)!]
-      
-      
       collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: sheduleCell)
       collectionView.delegate = self
       collectionView.dataSource = self

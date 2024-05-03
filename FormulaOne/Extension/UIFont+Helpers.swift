@@ -10,34 +10,14 @@ import Foundation
 import UIKit
 
 extension UIFont {
-    private static var headline: UIFont {
-        UIFontMetrics(forTextStyle: .headline)
-            .scaledFont(for: .systemFont(ofSize: 12, weight: .semibold))
-    }
-    
-    private static var subheadline: UIFont {
-        UIFontMetrics(forTextStyle: .subheadline)
-            .scaledFont(for: .systemFont(ofSize: 10, weight: .light))
-    }
-    private static var footnote: UIFont {
-        UIFontMetrics(forTextStyle: .footnote)
-            .scaledFont(for: .systemFont(ofSize: 11, weight: .thin))
-    }
+   
+   static func customFontSubtitle(ofSize fontSize: CGFloat) -> UIFont? {
+      return UIFont(name: "C&CRedAlertINET", size: fontSize)
+   }
+   
+   static func customFontTitle(ofSize fontSize: CGFloat) -> UIFont? {
+      return UIFont(name: "Superstcrea", size: fontSize)
+   }
    
    
-}
-extension UIFont {
-    enum Style {
-        case headline
-        case subheadline
-        case footnote
-    }
-    
-    static func custom(style: Style) -> UIFont {
-        switch style {
-        case .headline: return headline
-        case .subheadline: return subheadline
-        case .footnote: return footnote
-        }
-    }
 }

@@ -18,7 +18,7 @@ extension UICollectionViewCell {
       
       self.contentView.layer.borderWidth = 2
       self.contentView.layer.borderColor = UIColor.black.cgColor
-      self.contentView.backgroundColor = grayRetroColor
+      self.contentView.backgroundColor = .custom(style: .grayRetroColor)
       self.contentView.layer.cornerRadius = 8
       self.contentView.layer.masksToBounds = true
 

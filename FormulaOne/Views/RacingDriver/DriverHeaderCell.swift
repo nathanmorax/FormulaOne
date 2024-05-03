@@ -28,8 +28,8 @@ class DriverHeaderCell: UICollectionViewCell {
    private func configure() {
       
       
-      nameLabel.font = .custom(style: .footnote)
-      nationalityLabel.font = .custom(style: .subheadline)
+      /*nameLabel.font = .custom(style: .footnote)
+      nationalityLabel.font = .custom(style: .subheadline)*/
       
       separator.backgroundColor = .quaternaryLabel
       

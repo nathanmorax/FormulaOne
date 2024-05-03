@@ -12,8 +12,10 @@ class MainTabController: UITabBarController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      //UINavigationBar.applyCustomFont()
       setUpViewControllers()
       configuteTabBar()
+      
    }
    
    func setUpViewControllers() {
@@ -41,7 +43,7 @@ class MainTabController: UITabBarController {
       tabBar.layer.borderWidth = 1.0
       tabBar.layer.borderColor = UIColor.black.cgColor
       tabBar.tintColor = .black
-      tabBar.barTintColor = tabBarRetro
+      tabBar.barTintColor = .custom(style: .tabBarRetro)
    }
    
 }

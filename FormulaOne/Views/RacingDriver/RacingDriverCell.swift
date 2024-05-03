@@ -15,6 +15,7 @@ class RacingDriverCell: UITableViewCell {
    let nameDriverLabel = UILabel()
    let pointsDriverLabel = UILabel()
    let teamLabel =  UILabel()
+   let textColor = UIColor.dynamicText
    
    override func awakeFromNib() {
       super.awakeFromNib()
@@ -30,42 +31,19 @@ class RacingDriverCell: UITableViewCell {
    
    private func configure() {
       
-      backgroundColor = .systemGray6
+      //backgroundColor = .systemGray6
       
-      //self.contentView.backgroundColor = grayRetroColor
-
-
-      //positionDriverLabel.font = .custom(style: .subheadline)
-      positionDriverLabel.textColor = .secondaryLabel
-      positionDriverLabel.font = UIFont(name: "C&CRedAlertINET", size: 20)
-      positionDriverLabel.textColor = yewllowColor
-
+      positionDriverLabel.font = UIFont.customFontSubtitle(ofSize: 20)
+      positionDriverLabel.textColor = .custom(style: .yellowRetroColor)
       
-      //nameDriverLabel.font = .custom(style: .headline)
-      nameDriverLabel.font = UIFont(name: "C&CRedAlertINET", size: 24)
+      nameDriverLabel.font = UIFont.customFontSubtitle(ofSize: 24)
       nameDriverLabel.numberOfLines = 0
-
       
-      //teamLabel.font = .custom(style: .subheadline)
-      teamLabel.font = UIFont(name: "C&CRedAlertINET", size: 16)
+      teamLabel.font = UIFont.customFontSubtitle(ofSize: 16)
       teamLabel.numberOfLines = 0
       
-      //pointsDriverLabel.font = .custom(style: .subheadline)
-      
-      pointsDriverLabel.layer.shadowColor = UIColor.black.cgColor
-      pointsDriverLabel.layer.shadowOffset = CGSize(width: 2, height: 2) // Desplazamiento del sombreado en la dirección derecha y abajo
-      pointsDriverLabel.layer.shadowOpacity = 1 // Opacidad de la sombra
-      pointsDriverLabel.layer.shadowRadius = 9 // Radio de la sombra
-      pointsDriverLabel.layer.masksToBounds = false
-      
-      pointsDriverLabel.font = UIFont(name: "C&CRedAlertINET", size: 14)
-      pointsDriverLabel.textColor = .white
-      pointsDriverLabel.textAlignment = .center
-      pointsDriverLabel.layer.borderWidth = 1
-      pointsDriverLabel.layer.borderColor = UIColor.black.cgColor
-      pointsDriverLabel.layer.cornerRadius = 9
-      pointsDriverLabel.layer.masksToBounds = true
-   
+      pointsDriverLabel.applyShadow()
+      pointsDriverLabel.applyRetroStyle()
       
       stack.axis = .vertical
       stack.distribution = .fillEqually
@@ -73,13 +51,14 @@ class RacingDriverCell: UITableViewCell {
    }
    
    private func constraint() {
+      
       addSubviews(positionDriverLabel, view, stack, pointsDriverLabel)
       stack.addArrangedSubviews(nameDriverLabel, teamLabel)
       
-      positionDriverLabel.translatesAutoresizingMaskIntoConstraints = false
-      view.translatesAutoresizingMaskIntoConstraints = false
-      stack.translatesAutoresizingMaskIntoConstraints = false
-      pointsDriverLabel.translatesAutoresizingMaskIntoConstraints = false
+      
+      for views in [positionDriverLabel, view, stack, pointsDriverLabel] {
+         views.translatesAutoresizingMaskIntoConstraints = false
+      }
       
       NSLayoutConstraint.activate([
          
@@ -98,10 +77,29 @@ class RacingDriverCell: UITableViewCell {
          
          pointsDriverLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
          pointsDriverLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-         pointsDriverLabel.heightAnchor.constraint(equalToConstant: 32),
-         pointsDriverLabel.widthAnchor.constraint(equalToConstant: 42)
+         pointsDriverLabel.heightAnchor.constraint(equalToConstant: 35),
+         pointsDriverLabel.widthAnchor.constraint(equalToConstant: 52)
          
       ])
+   }
+   
+   func configure(with driverData: Response, isEvenRow: Bool) {
+      positionDriverLabel.text = driverData.position?.formatted()
+      nameDriverLabel.text = driverData.driver?.name
+      teamLabel.text = driverData.team?.name
+      pointsDriverLabel.text = driverData.points?.formatted()
+      
+      let backgroundColor = isEvenRow ? UIColor.secondarySystemBackground : .custom(style: .grayRetroColor)
+      contentView.backgroundColor = backgroundColor
+      
+      
+      if isEvenRow {
+         pointsDriverLabel.backgroundColor = .custom(style: .grayRetroColor)
+      } else {
+         pointsDriverLabel.backgroundColor = .custom(style: .redRetroColor)
+         nameDriverLabel.textColor = textColor
+         teamLabel.textColor = textColor
+      }
    }
    
 }

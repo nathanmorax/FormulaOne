@@ -17,14 +17,14 @@ class RacingDriverViewController: UIViewController  {
    }
    
    var mock = [
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75")
+      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75 pts"),
+      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "64 pts"),
+      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "60 pts"),
+      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "60 pts"),
+      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "55 pts"),
+      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "42 pts"),
+      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "37 pts"),
+      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "10 pts")
       
    ]
    
@@ -34,6 +34,7 @@ class RacingDriverViewController: UIViewController  {
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      setupCustomNavigationBar()
       configure()
       constraint()
       fetchData()
@@ -41,15 +42,19 @@ class RacingDriverViewController: UIViewController  {
    
    private func configure() {
       
-      navigationController?.navigationBar.prefersLargeTitles = true
+      view.backgroundColor = .secondarySystemBackground
+      tableView.backgroundColor = .clear
       
-      navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Superstcrea", size: 30)!]
-      navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Superstcrea", size: 24)!]
+      tableView.rowHeight = UITableView.automaticDimension
+      tableView.translatesAutoresizingMaskIntoConstraints = false
+      
+      tableView.rowHeight = 55
+      tableView.estimatedRowHeight = UITableView.automaticDimension
       
       tableView.delegate = self
       tableView.dataSource = self
       tableView.estimatedRowHeight = 120
-      tableView.rowHeight = UITableView.automaticDimension
+      
       tableView.register(RacingDriverCell.self, forCellReuseIdentifier: tableViewcell)
       
    }
@@ -57,13 +62,6 @@ class RacingDriverViewController: UIViewController  {
    private func constraint() {
       
       view.addSubview(tableView)
-      
-      view.backgroundColor = .secondarySystemBackground
-      tableView.backgroundColor = .clear
-      tableView.translatesAutoresizingMaskIntoConstraints = false
-      
-      tableView.rowHeight = 55
-      tableView.estimatedRowHeight = UITableView.automaticDimension
       
       NSLayoutConstraint.activate([
          tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -91,7 +89,7 @@ class RacingDriverViewController: UIViewController  {
 extension RacingDriverViewController: UITableViewDelegate, UITableViewDataSource {
    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return mock.count
+      return driver.count
    }
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,28 +102,14 @@ extension RacingDriverViewController: UITableViewDelegate, UITableViewDataSource
           print("COloooor---", color)
           cell.view.backgroundColor = color
           }*/
-         
-         /*cell.positionDriverLabel.text = driver[indexPath.row].position?.formatted()
-          cell.nameDriverLabel.text = driver[indexPath.row].driver?.name
-          cell.teamLabel.text = driver[indexPath.row].team?.name
-          cell.pointsDriverLabel.text = driver[indexPath.row].points?.formatted()*/
-         
+         let driverData = driver[indexPath.row]
          let isEvenRow = indexPath.row % 2 == 0
+         cell.configure(with: driverData, isEvenRow: isEvenRow)
          
-         // Configura el color de fondo de la celda
-         if isEvenRow {
-            cell.contentView.backgroundColor = .secondarySystemBackground
-            cell.pointsDriverLabel.backgroundColor = grayRetroColor
-         } else {
-            cell.contentView.backgroundColor = grayRetroColor
-            cell.pointsDriverLabel.backgroundColor = redRetroColor
-
-         }
-         
-         cell.pointsDriverLabel.text = mock[indexPath.row].points
-         cell.positionDriverLabel.text = mock[indexPath.row].position
-         cell.nameDriverLabel.text =  mock[indexPath.row].driver
-         cell.teamLabel.text = mock[indexPath.row].team
+         /*cell.pointsDriverLabel.text = mock[indexPath.row].points
+          cell.positionDriverLabel.text = mock[indexPath.row].position
+          cell.nameDriverLabel.text =  mock[indexPath.row].driver
+          cell.teamLabel.text = mock[indexPath.row].team*/
          
       }
       return cell

@@ -59,13 +59,13 @@ class ScheduleDetailHeaderCell: UITableViewCell {
       
       
       stackLocation.axis = .vertical
-      stackLocation.backgroundColor = grayRetroColor
+      stackLocation.backgroundColor = .custom(style: .grayRetroColor)
       stackLocation.layer.cornerRadius = 8
       stackLocation.layer.masksToBounds = true
       
       
       stackLength.axis = .vertical
-      stackLength.backgroundColor = grayRetroColor
+      stackLength.backgroundColor = .custom(style: .grayRetroColor)
       stackLength.layer.cornerRadius = 8
       stackLength.layer.masksToBounds = true
 
