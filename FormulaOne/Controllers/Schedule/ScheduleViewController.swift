@@ -36,7 +36,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
       setupCustomNavigationBar()
       configure()
       constraint()
-      fetchDataScheduleRace()
+      //fetchDataScheduleRace()
       
       let now = Date()
       let calendar = Calendar.current
@@ -44,7 +44,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
       
       print("year Current: ", year)
       
-      /*guard let url = URL(string: "https://v1.formula-1.api-sports.io/drivers?id=10") else { return }
+      guard let url = URL(string:  "https://v1.formula-1.api-sports.io/rankings/teams?season=2024") else { return }
        //https://v1.formula-1.api-sports.io/races?season=2024&competition=2
        //"https://v1.formula-1.api-sports.io/races?competition=1&season=2019&type=1st Practice"
        var request = URLRequest(url: url)
@@ -65,7 +65,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
        //completion(nil, error)
        }
        
-       }.resume()*/
+       }.resume()
       
       for familyName in UIFont.familyNames.sorted() {
          print(familyName)

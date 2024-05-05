@@ -23,7 +23,7 @@ class MainTabController: UITabBarController {
          
          createNavigationController(for: ScheduleViewController(), title: "Schedule", imageName: "flag"),
          createNavigationController(for: RacingDriverViewController(), title: "Drivers", imageName: "car"),
-         createNavigationController(for: UIViewController(), title: "Teams", imageName: "car"),
+         createNavigationController(for: TeamsViewController(), title: "Teams", imageName: "car"),
          createNavigationController(for: UIViewController(), title: "Standing", imageName: "trophy"),
       ]
    }

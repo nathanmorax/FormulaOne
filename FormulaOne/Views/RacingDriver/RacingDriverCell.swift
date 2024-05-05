@@ -52,11 +52,11 @@ class RacingDriverCell: UITableViewCell {
    
    private func constraint() {
       
-      addSubviews(positionDriverLabel, view, stack, pointsDriverLabel)
+      addSubviews(positionDriverLabel, stack, pointsDriverLabel)
       stack.addArrangedSubviews(nameDriverLabel, teamLabel)
       
       
-      for views in [positionDriverLabel, view, stack, pointsDriverLabel] {
+      for views in [positionDriverLabel, stack, pointsDriverLabel] {
          views.translatesAutoresizingMaskIntoConstraints = false
       }
       
@@ -65,20 +65,15 @@ class RacingDriverCell: UITableViewCell {
          positionDriverLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
          positionDriverLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18),
          
-         view.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         view.leadingAnchor.constraint(equalTo: positionDriverLabel.leadingAnchor, constant: 18),
-         view.widthAnchor.constraint(equalToConstant: 2),
-         view.heightAnchor.constraint(equalToConstant: 35),
-         
          stack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         stack.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 18),
+         stack.leadingAnchor.constraint(equalTo: positionDriverLabel.trailingAnchor, constant: 18),
          stack.heightAnchor.constraint(equalToConstant: 30),
          stack.widthAnchor.constraint(equalToConstant: 180),
          
          pointsDriverLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
          pointsDriverLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
          pointsDriverLabel.heightAnchor.constraint(equalToConstant: 35),
-         pointsDriverLabel.widthAnchor.constraint(equalToConstant: 52)
+         pointsDriverLabel.widthAnchor.constraint(equalToConstant: 58)
          
       ])
    }
@@ -87,7 +82,7 @@ class RacingDriverCell: UITableViewCell {
       positionDriverLabel.text = driverData.position?.formatted()
       nameDriverLabel.text = driverData.driver?.name
       teamLabel.text = driverData.team?.name
-      pointsDriverLabel.text = driverData.points?.formatted()
+      pointsDriverLabel.text = "\(String(describing: driverData.points)) pts"
       
       let backgroundColor = isEvenRow ? UIColor.secondarySystemBackground : .custom(style: .grayRetroColor)
       contentView.backgroundColor = backgroundColor

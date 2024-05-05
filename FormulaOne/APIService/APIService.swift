@@ -12,7 +12,7 @@ class APIService {
    static let shared = APIService()
    
    func fetchRankingsTeams(completion: @escaping(ServiceResponse?, Error?) ->()) {
-      let urlString = "https://v1.formula-1.api-sports.io/rankings/drivers?season=2023"
+      let urlString = "https://v1.formula-1.api-sports.io/rankings/teams?season=2024"
       fetchDataGeneric(urlString: urlString, completion: completion)
    }
    

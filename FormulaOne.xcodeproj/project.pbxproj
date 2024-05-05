@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B19F7272BE58A22006ECE82 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B19F7262BE58A22006ECE82 /* TeamsViewController.swift */; };
+		0B19F7292BE5914F006ECE82 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B19F7282BE5914F006ECE82 /* Team.swift */; };
+		0B19F72C2BE5D675006ECE82 /* TeamsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B19F72B2BE5D675006ECE82 /* TeamsViewCell.swift */; };
 		0B7F57302BE1A8DA00291197 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F572F2BE1A8DA00291197 /* UIColor+Helpers.swift */; };
-		0B7F57322BE1B19100291197 /* Formula 1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F57312BE1B19100291197 /* Formula 1.ttf */; };
 		0B7F57382BE1DFFB00291197 /* super-star.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F57372BE1DFFB00291197 /* super-star.ttf */; };
 		0B7F573A2BE31BEB00291197 /* C&C Red Alert.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F57392BE31BEB00291197 /* C&C Red Alert.ttf */; };
 		0B7F573C2BE32F5C00291197 /* UIViewCell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F573B2BE32F5C00291197 /* UIViewCell+Helpers.swift */; };
@@ -41,8 +43,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B19F7262BE58A22006ECE82 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
+		0B19F7282BE5914F006ECE82 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		0B19F72B2BE5D675006ECE82 /* TeamsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewCell.swift; sourceTree = "<group>"; };
 		0B7F572F2BE1A8DA00291197 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
-		0B7F57312BE1B19100291197 /* Formula 1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula 1.ttf"; sourceTree = "<group>"; };
 		0B7F57372BE1DFFB00291197 /* super-star.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "super-star.ttf"; sourceTree = "<group>"; };
 		0B7F57392BE31BEB00291197 /* C&C Red Alert.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "C&C Red Alert.ttf"; sourceTree = "<group>"; };
 		0B7F573B2BE32F5C00291197 /* UIViewCell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewCell+Helpers.swift"; sourceTree = "<group>"; };
@@ -90,12 +94,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B19F7252BE589C4006ECE82 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				0B19F7262BE58A22006ECE82 /* TeamsViewController.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		0B19F72A2BE5D644006ECE82 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				0B19F72B2BE5D675006ECE82 /* TeamsViewCell.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
 		0B929C122BE1661A0017B933 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				0B7F57372BE1DFFB00291197 /* super-star.ttf */,
 				0B7F57392BE31BEB00291197 /* C&C Red Alert.ttf */,
-				0B7F57312BE1B19100291197 /* Formula 1.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -149,6 +168,7 @@
 			children = (
 				7CE071E02BB798D00096DC28 /* Schedule.swift */,
 				0BE82FA02BC6447A00723155 /* Driver.swift */,
+				0B19F7282BE5914F006ECE82 /* Team.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +184,7 @@
 		7CE071E52BB7994E0096DC28 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0B19F7252BE589C4006ECE82 /* Teams */,
 				7CE41FBC2BBA196700DDE7FF /* RacingDriver */,
 				7CE071E72BB799730096DC28 /* Schedule */,
 				7CE071D92BB797E10096DC28 /* MainTabController.swift */,
@@ -175,8 +196,9 @@
 		7CE071E62BB7995B0096DC28 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0B19F72A2BE5D644006ECE82 /* Teams */,
 				7CE41FBD2BBA1F4E00DDE7FF /* RacingDriver */,
-				7CE071E82BB799A50096DC28 /* ScheduleCell */,
+				7CE071E82BB799A50096DC28 /* Schedule */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,14 +212,14 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
-		7CE071E82BB799A50096DC28 /* ScheduleCell */ = {
+		7CE071E82BB799A50096DC28 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
 				7CE071E92BB79A040096DC28 /* ScheduleCell.swift */,
 				7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */,
 				7CA230862BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift */,
 			);
-			path = ScheduleCell;
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		7CE071EB2BB79D320096DC28 /* Extension */ = {
@@ -320,7 +342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE071CF2BB797370096DC28 /* Assets.xcassets in Resources */,
-				0B7F57322BE1B19100291197 /* Formula 1.ttf in Resources */,
 				0B7F57382BE1DFFB00291197 /* super-star.ttf in Resources */,
 				7CE071D22BB797370096DC28 /* Base in Resources */,
 				0B7F573A2BE31BEB00291197 /* C&C Red Alert.ttf in Resources */,
@@ -394,11 +415,14 @@
 				7CE071EF2BB79D990096DC28 /* UIStackView+Helpers.swift in Sources */,
 				0B7F57402BE497C000291197 /* UILabel+Helpers.swift in Sources */,
 				0BE82FA12BC6447A00723155 /* Driver.swift in Sources */,
+				0B19F7292BE5914F006ECE82 /* Team.swift in Sources */,
+				0B19F72C2BE5D675006ECE82 /* TeamsViewCell.swift in Sources */,
 				7CE071E42BB799250096DC28 /* APIService.swift in Sources */,
 				0B7F573C2BE32F5C00291197 /* UIViewCell+Helpers.swift in Sources */,
 				0B7F57302BE1A8DA00291197 /* UIColor+Helpers.swift in Sources */,
 				7CE071F12BB79FD10096DC28 /* DateFormatter+Helpers.swift in Sources */,
 				7C0D22A12BC2A6C5003486DC /* ScheduleDetailController.swift in Sources */,
+				0B19F7272BE58A22006ECE82 /* TeamsViewController.swift in Sources */,
 				7CE071DC2BB7981C0096DC28 /* BaseCollectionView.swift in Sources */,
 				0BC20E722BC61AB90054BC2E /* DriverDetailViewController.swift in Sources */,
 			);

@@ -9,25 +9,6 @@ import UIKit
 
 class RacingDriverViewController: UIViewController  {
    
-   struct mockData {
-      let position: String
-      let driver: String
-      let team: String
-      let points: String
-   }
-   
-   var mock = [
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "75 pts"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "64 pts"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "60 pts"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "60 pts"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "55 pts"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "42 pts"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "37 pts"),
-      mockData(position: "1", driver: "Alonso", team: "Red BUll", points: "10 pts")
-      
-   ]
-   
    var tableView = UITableView(frame: .zero)
    let tableViewcell = "id"
    var driver = [Response]()
@@ -105,11 +86,6 @@ extension RacingDriverViewController: UITableViewDelegate, UITableViewDataSource
          let driverData = driver[indexPath.row]
          let isEvenRow = indexPath.row % 2 == 0
          cell.configure(with: driverData, isEvenRow: isEvenRow)
-         
-         /*cell.pointsDriverLabel.text = mock[indexPath.row].points
-          cell.positionDriverLabel.text = mock[indexPath.row].position
-          cell.nameDriverLabel.text =  mock[indexPath.row].driver
-          cell.teamLabel.text = mock[indexPath.row].team*/
          
       }
       return cell
