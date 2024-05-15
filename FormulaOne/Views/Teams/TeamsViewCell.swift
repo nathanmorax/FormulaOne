@@ -15,9 +15,7 @@ class TeamsViewCell: UITableViewCell {
    var pointsLabel = UILabel()
    var imageLogo = UIImageView()
    let textColor = UIColor.dynamicText
-   
-   
-   
+
    override func awakeFromNib() {
       super.awakeFromNib()
       configure()

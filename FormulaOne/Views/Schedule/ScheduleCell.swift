@@ -8,7 +8,7 @@
 import UIKit
 
 class ScheduleCell: UICollectionViewCell {
-   
+   static let reuseID = "ScheduleCell"
    private let stack = UIStackView()
    private let separator = UIView()
    let dateLabel = UILabel()

@@ -59,7 +59,6 @@ class RacingDriverViewController: UIViewController  {
          guard let result, error == nil else { return }
          
          self?.driver = result.response ?? []
-         print("Driver::", self?.driver.count)
          DispatchQueue.main.async {
             self?.tableView.reloadData()
          }

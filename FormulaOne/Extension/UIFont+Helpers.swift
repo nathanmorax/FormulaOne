@@ -5,8 +5,6 @@
 //  Created by Xcaret Mora on 29/03/24.
 //
 
-import Foundation
-
 import UIKit
 
 extension UIFont {
@@ -19,5 +17,16 @@ extension UIFont {
       return UIFont(name: "Superstcrea", size: fontSize)
    }
    
-   
+}
+
+extension NSAttributedString {
+    static func setTextBold(_ text: String, fontSize: CGFloat) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: text)
+        
+        if let customFont = UIFont.customFontTitle(ofSize: fontSize) {
+            attributedString.addAttribute(.font, value: customFont, range: NSRange(location: 0, length: attributedString.length))
+        }
+        
+        return attributedString
+    }
 }

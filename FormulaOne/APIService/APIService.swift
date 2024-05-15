@@ -25,6 +25,12 @@ class APIService {
       let urlString = "https://v1.formula-1.api-sports.io/rankings/drivers?season=2024"
       fetchDataGeneric(urlString: urlString, completion: completion)
    }
+   
+   func fetchCircuitAbout(idCircuit: Int, completion: @escaping(CircuitResponse?, Error?) ->()) {
+      let urlString = "https://v1.formula-1.api-sports.io/circuits?id=\(idCircuit)"
+      fetchDataGeneric(urlString: urlString, completion: completion)
+      
+   }
    func fetchScheduleCompetition(idCompetition: Int, completion: @escaping(ServiceResponse?, Error?) -> ()) {
       let urlString = "https://v1.formula-1.api-sports.io/races?season=2024&competition=\(idCompetition)"
       fetchDataGeneric(urlString: urlString, completion: completion)

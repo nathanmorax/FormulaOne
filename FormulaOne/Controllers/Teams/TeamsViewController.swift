@@ -76,7 +76,6 @@ class TeamsViewController: UIViewController {
          guard let result, error == nil else { return  }
          
          self?.teams = result.response  ?? []
-         print("Rankings Teams:", self?.teams.count)
          DispatchQueue.main.async {
             self?.tableView.reloadData()
          }

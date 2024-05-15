@@ -82,7 +82,7 @@ class RacingDriverCell: UITableViewCell {
       positionDriverLabel.text = driverData.position?.formatted()
       nameDriverLabel.text = driverData.driver?.name
       teamLabel.text = driverData.team?.name
-      pointsDriverLabel.text = "\(String(describing: driverData.points)) pts"
+      pointsDriverLabel.text = driverData.points?.formatted()
       
       let backgroundColor = isEvenRow ? UIColor.secondarySystemBackground : .custom(style: .grayRetroColor)
       contentView.backgroundColor = backgroundColor

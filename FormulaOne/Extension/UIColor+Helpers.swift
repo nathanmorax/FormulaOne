@@ -28,6 +28,9 @@ extension UIColor {
    private static var grayRetroColorClear: UIColor {
       UIColor(red: 0.71, green: 0.71, blue: 0.71, alpha: 1.00)
    }
+   private static var greenRetroColor: UIColor {
+      UIColor(red: 0.07, green: 0.37, blue: 0.31, alpha: 1.00)
+   }
    
    
    enum Style {
@@ -36,6 +39,7 @@ extension UIColor {
       case redRetroColor
       case yellowRetroColor
       case grayRetroColorClear
+      case greenRetroColor
    }
    
    static func custom(style: Style) -> UIColor {
@@ -46,6 +50,7 @@ extension UIColor {
       case .redRetroColor: return redRetroColor
       case .yellowRetroColor: return yellowRetroColor
       case .grayRetroColorClear: return grayRetroColorClear
+      case .greenRetroColor: return greenRetroColor
       }
    }
 }

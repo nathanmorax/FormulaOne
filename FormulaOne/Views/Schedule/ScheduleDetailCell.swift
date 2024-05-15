@@ -7,9 +7,8 @@
 
 import UIKit
 
-class ScheduleDetailCell: UITableViewCell {
-   
-   private let stack = UIStackView()
+class ScheduleDetailCell: UICollectionViewCell {
+   static let scheduleDetailId = "scheduleDetailId"
    let typeRaceLabel = UILabel()
    let dateLabel = UILabel()
    let statusLabel = UILabel()
@@ -23,8 +22,8 @@ class ScheduleDetailCell: UITableViewCell {
     
     }*/
    
-   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-      super.init(style: style, reuseIdentifier: reuseIdentifier)
+   override init(frame: CGRect) {
+      super.init(frame: frame)
       configure()
       constraint()
    }
@@ -35,41 +34,27 @@ class ScheduleDetailCell: UITableViewCell {
    
    private func configure() {
       
-      backgroundColor = .systemGray6
+      contentView.backgroundColor = UIColor.custom(style: .grayRetroColorClear)
       
-      
-      typeRaceLabel.font = UIFont(name: "Superstcrea", size: 14)
-      typeRaceLabel.textColor = .white
-      
-      dateLabel.font = UIFont(name: "Formula1-Display-Regular", size: 9)
-      statusLabel.font = UIFont(name: "Formula1-Display-Regular", size: 9)
-      
-      //imageView.tintColor = .green
-      
-      stack.axis = .vertical
+      //dateLabel.font = NSAttributedString.setTextBold(<#T##String#>, fontSize: <#T##CGFloat#>)
+      dateLabel.numberOfLines = 0
+      dateLabel.textAlignment = .center
+   
       
    }
    
    private func constraint() {
       
-      addSubviews(stack, statusLabel)
-      stack.addArrangedSubviews(typeRaceLabel, dateLabel)
+      addSubview(dateLabel)
       
-      statusLabel.translatesAutoresizingMaskIntoConstraints = false
-      stack.translatesAutoresizingMaskIntoConstraints = false
+      dateLabel.translatesAutoresizingMaskIntoConstraints = false
       
       NSLayoutConstraint.activate([
          
-         stack.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
-         stack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-         stack.heightAnchor.constraint(equalToConstant: 50),
-         
-         statusLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         statusLabel.leadingAnchor.constraint(equalTo: stack.trailingAnchor, constant: 24),
-         statusLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-         statusLabel.heightAnchor.constraint(equalToConstant: 14),
-         statusLabel.widthAnchor.constraint(equalToConstant: 80),
+         dateLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
+         dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
+         dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
+         dateLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4)
       ])
    }
 }

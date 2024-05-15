@@ -9,7 +9,6 @@ import UIKit
 
 class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLayout {
    
-   fileprivate var sheduleCell = "cell"
    var schedule = [Response]()
    let formatterDate = String()
    
@@ -36,15 +35,14 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
       setupCustomNavigationBar()
       configure()
       constraint()
-      //fetchDataScheduleRace()
+      fetchDataScheduleRace()
       
       let now = Date()
       let calendar = Calendar.current
       let year = calendar.component(.year, from: now)
       
-      print("year Current: ", year)
       
-      guard let url = URL(string:  "https://v1.formula-1.api-sports.io/rankings/teams?season=2024") else { return }
+      /*guard let url = URL(string:  "https://v1.formula-1.api-sports.io/circuits?id=19") else { return }
        //https://v1.formula-1.api-sports.io/races?season=2024&competition=2
        //"https://v1.formula-1.api-sports.io/races?competition=1&season=2019&type=1st Practice"
        var request = URLRequest(url: url)
@@ -71,7 +69,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
          print(familyName)
          let fontNames  = UIFont.fontNames(forFamilyName: familyName)
          print("--- \(fontNames)")
-      }
+      }*/
       
    }
    
@@ -84,7 +82,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
       view.backgroundColor = .secondarySystemBackground
       
       collectionView.backgroundColor = .clear
-      collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: sheduleCell)
+      collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: ScheduleCell.reuseID)
       collectionView.delegate = self
       collectionView.dataSource = self
       collectionView.showsVerticalScrollIndicator = false
@@ -110,7 +108,6 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
          guard let result, error == nil else { return }
          
          self?.schedule = result.response ?? []
-         print("DATAAAA: ", self?.schedule.count)
          
          DispatchQueue.main.async {
             self?.collectionView?.reloadData()
@@ -123,15 +120,15 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
    }
    
    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: sheduleCell, for: indexPath)
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleCell.reuseID, for: indexPath)
       if let cell = cell as? ScheduleCell {
          
          
          /*cell.countryImage.image = mock[indexPath.item].image
-         cell.nameCircuitLabel.text = mock[indexPath.item].circuit
-         cell.locationCircuitLabel.text = mock[indexPath.item].city
-         cell.dateLabel.text = mock[indexPath.item].date*/
-
+          cell.nameCircuitLabel.text = mock[indexPath.item].circuit
+          cell.locationCircuitLabel.text = mock[indexPath.item].city
+          cell.dateLabel.text = mock[indexPath.item].date*/
+         
          if let countryImage = CountryImage(rawValue: schedule[indexPath.item].competition?.location?.country ?? "") {
             cell.countryImage.image = UIImage(named: countryImage.rawValue)
             let uppercasedText = schedule[indexPath.item].competition?.location?.country
@@ -145,19 +142,22 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
       return cell
    }
    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      let competitionId = schedule[indexPath.item].competition?.id ?? 0
-      let sheduleDetail = ScheduleDetailController(competitionId: competitionId)
       
-      if let sheet = sheduleDetail.sheetPresentationController {
-         sheet.detents = [ .custom { _ in return 550 }]
-         sheet.preferredCornerRadius = 10
-         sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-         sheet.prefersGrabberVisible = true
+      guard indexPath.item < schedule.count else {
+          return
       }
-      //self.navigationController?.pushViewController(viewController, animated: true)
-      self.present(sheduleDetail, animated: true, completion: nil)
+
+      let selectedSchedule = schedule[indexPath.item]
+      let competitionId = selectedSchedule.competition?.id ?? 0
+      let circuitId = selectedSchedule.circuit?.id ?? 0
       
-      // presentSheetSheduleDetail()
+      let scheduleDetailVC = ScheduleDetailController(circuitId: circuitId, competitionId: competitionId)
+
+      scheduleDetailVC.sheduleDetail = selectedSchedule
+
+      present(UINavigationController(rootViewController: scheduleDetailVC), animated: true)
+
+      
    }
    
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

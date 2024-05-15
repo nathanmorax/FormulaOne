@@ -7,19 +7,12 @@
 
 import UIKit
 
-class ScheduleDetailHeaderCell: UITableViewCell {
-   
-   private let stackLocation = UIStackView()
-   private let stackLength1 = UIStackView()
-   private let stackLength = UIStackView()
-   private let separator = UIView()
-   let titleCountryLabel = UILabel()
+class ScheduleDetailHeaderCell: UICollectionViewCell {
+   static let scheduleHeaderId = "scheduleHeaderId"
+   private let stackView = UIStackView()
    let countryLabel = UILabel()
    let cityLabel = UILabel()
-   let titleLengthLabel = UILabel()
-   let distanceLabel = UILabel()
-   let kmLabel = UILabel()
-   //let imageView = UIImageView()
+   let circuitLabel = UILabel()
    
    
    /* override init(frame: CGRect) {
@@ -29,8 +22,8 @@ class ScheduleDetailHeaderCell: UITableViewCell {
     
     }*/
    
-   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-      super.init(style: style, reuseIdentifier: reuseIdentifier)
+   override init(frame: CGRect) {
+      super.init(frame: frame)
       configure()
       constraint()
    }
@@ -41,58 +34,32 @@ class ScheduleDetailHeaderCell: UITableViewCell {
    
    private func configure() {
       
-      backgroundColor = .clear
-
-      titleCountryLabel.text = "COUNTRY"
-      titleCountryLabel.textColor = .black
-      titleCountryLabel.font = UIFont(name: "Superstcrea", size: 18)
+      
+      contentView.backgroundColor = .blue
+      
+      circuitLabel.font = UIFont.customFontSubtitle(ofSize: 28)
+      countryLabel.font = UIFont.customFontTitle(ofSize: 24)
+      cityLabel.font = UIFont.customFontSubtitle(ofSize: 19)
       
       
-      countryLabel.font = UIFont(name: "Formula1-Display-Regular", size: 9)
-      cityLabel.font = UIFont(name: "Formula1-Display-Regular", size: 9)
-      
-      titleLengthLabel.text = "LENGTH"
-      titleLengthLabel.textColor = .black
-      titleLengthLabel.font = UIFont(name: "Superstcrea", size: 18)
-      kmLabel.text = " "
-      distanceLabel.font = UIFont(name: "Formula1-Display-Regular", size: 9)
-      
-      
-      stackLocation.axis = .vertical
-      stackLocation.backgroundColor = .custom(style: .grayRetroColor)
-      stackLocation.layer.cornerRadius = 8
-      stackLocation.layer.masksToBounds = true
-      
-      
-      stackLength.axis = .vertical
-      stackLength.backgroundColor = .custom(style: .grayRetroColor)
-      stackLength.layer.cornerRadius = 8
-      stackLength.layer.masksToBounds = true
-
-
+      stackView.axis = .vertical
          
    }
    
    private func constraint() {
       
-      addSubviews(stackLocation, stackLength)
-      stackLocation.addArrangedSubviews(titleCountryLabel, countryLabel, cityLabel)
-      stackLength.addArrangedSubviews(titleLengthLabel, distanceLabel)
+      addSubview(stackView)
       
-      stackLocation.translatesAutoresizingMaskIntoConstraints = false
-      stackLength.translatesAutoresizingMaskIntoConstraints = false
-
+      stackView.addArrangedSubviews(countryLabel, cityLabel, circuitLabel)
       
+      stackView.translatesAutoresizingMaskIntoConstraints = false
+   
       NSLayoutConstraint.activate([
-         stackLocation.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         stackLocation.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-         stackLocation.heightAnchor.constraint(equalToConstant: 40),
-         stackLocation.trailingAnchor.constraint(equalTo: self.stackLength.leadingAnchor, constant: -84),
          
-         stackLength.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-         stackLength.leadingAnchor.constraint(equalTo: stackLocation.trailingAnchor),
-         stackLength.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-         stackLength.heightAnchor.constraint(equalToConstant: 50),
+         stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
+         stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
+         stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
+         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12)
 
       ])
    }
