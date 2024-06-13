@@ -24,6 +24,7 @@
 		0BF2A8DB2BE849120084780E /* UIBarButtonItem+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2A8DA2BE849120084780E /* UIBarButtonItem+Helpers.swift */; };
 		52AA54676913DA888B6C5423 /* Pods_FormulaOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF334A89CB28845D22AAB9A2 /* Pods_FormulaOne.framework */; };
 		7C0D22A12BC2A6C5003486DC /* ScheduleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D22A02BC2A6C5003486DC /* ScheduleDetailController.swift */; };
+		7C1E1B192C15244300B4C1B0 /* DriverDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E1B182C15244300B4C1B0 /* DriverDetailController.swift */; };
 		7CA230872BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA230862BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift */; };
 		7CE071C62BB797350096DC28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071C52BB797350096DC28 /* AppDelegate.swift */; };
 		7CE071C82BB797350096DC28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071C72BB797350096DC28 /* SceneDelegate.swift */; };
@@ -42,6 +43,8 @@
 		7CE071F32BB7A3690096DC28 /* UIFont+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F22BB7A3690096DC28 /* UIFont+Helpers.swift */; };
 		7CE071F82BB88CDD0096DC28 /* ScheduleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */; };
 		7CE41FBF2BBA1F7F00DDE7FF /* RacingDriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE41FBE2BBA1F7F00DDE7FF /* RacingDriverCell.swift */; };
+		7CF65D532C190345007EE839 /* ScheduleFastestLapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF65D522C190345007EE839 /* ScheduleFastestLapCell.swift */; };
+		7CF65D552C19885B007EE839 /* ReusableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF65D542C19885B007EE839 /* ReusableHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,7 @@
 		0BF2A8DA2BE849120084780E /* UIBarButtonItem+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Helpers.swift"; sourceTree = "<group>"; };
 		4DDE1FFE08C981C05E48D838 /* Pods-FormulaOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormulaOne.release.xcconfig"; path = "Target Support Files/Pods-FormulaOne/Pods-FormulaOne.release.xcconfig"; sourceTree = "<group>"; };
 		7C0D22A02BC2A6C5003486DC /* ScheduleDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailController.swift; sourceTree = "<group>"; };
+		7C1E1B182C15244300B4C1B0 /* DriverDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailController.swift; sourceTree = "<group>"; };
 		7CA230862BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailHeaderCell.swift; sourceTree = "<group>"; };
 		7CE071C22BB797350096DC28 /* FormulaOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormulaOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE071C52BB797350096DC28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		7CE071F22BB7A3690096DC28 /* UIFont+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Helpers.swift"; sourceTree = "<group>"; };
 		7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailCell.swift; sourceTree = "<group>"; };
 		7CE41FBE2BBA1F7F00DDE7FF /* RacingDriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacingDriverCell.swift; sourceTree = "<group>"; };
+		7CF65D522C190345007EE839 /* ScheduleFastestLapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFastestLapCell.swift; sourceTree = "<group>"; };
+		7CF65D542C19885B007EE839 /* ReusableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableHeaderView.swift; sourceTree = "<group>"; };
 		AE2A5309CEBE4D82A85ADE78 /* Pods-FormulaOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormulaOne.debug.xcconfig"; path = "Target Support Files/Pods-FormulaOne/Pods-FormulaOne.debug.xcconfig"; sourceTree = "<group>"; };
 		DF334A89CB28845D22AAB9A2 /* Pods_FormulaOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormulaOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -127,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */,
+				7C1E1B182C15244300B4C1B0 /* DriverDetailController.swift */,
 			);
 			path = DriverDetail;
 			sourceTree = "<group>";
@@ -204,6 +211,7 @@
 				0B19F72A2BE5D644006ECE82 /* Teams */,
 				7CE41FBD2BBA1F4E00DDE7FF /* RacingDriver */,
 				7CE071E82BB799A50096DC28 /* Schedule */,
+				7CF65D542C19885B007EE839 /* ReusableHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 				7CE071F72BB88CDD0096DC28 /* ScheduleDetailCell.swift */,
 				7CA230862BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift */,
 				0B563C902BEEB63800D076C3 /* ScheduleAboutCell.swift */,
+				7CF65D522C190345007EE839 /* ScheduleFastestLapCell.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -298,7 +307,6 @@
 				7CE071BE2BB797350096DC28 /* Sources */,
 				7CE071BF2BB797350096DC28 /* Frameworks */,
 				7CE071C02BB797350096DC28 /* Resources */,
-				40ED784CD3120161F69740C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -357,23 +365,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		40ED784CD3120161F69740C9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FormulaOne/Pods-FormulaOne-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FormulaOne/Pods-FormulaOne-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormulaOne/Pods-FormulaOne-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FD032ED8AA63A3C9378B47A4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -421,7 +412,9 @@
 				0BAB080D2BF2E85A00A392DE /* Circuit.swift in Sources */,
 				7CE071EF2BB79D990096DC28 /* UIStackView+Helpers.swift in Sources */,
 				0B7F57402BE497C000291197 /* UILabel+Helpers.swift in Sources */,
+				7C1E1B192C15244300B4C1B0 /* DriverDetailController.swift in Sources */,
 				0BE82FA12BC6447A00723155 /* Driver.swift in Sources */,
+				7CF65D552C19885B007EE839 /* ReusableHeaderView.swift in Sources */,
 				0B19F7292BE5914F006ECE82 /* Team.swift in Sources */,
 				0B19F72C2BE5D675006ECE82 /* TeamsViewCell.swift in Sources */,
 				0BF2A8DB2BE849120084780E /* UIBarButtonItem+Helpers.swift in Sources */,
@@ -429,6 +422,7 @@
 				0B7F573C2BE32F5C00291197 /* UIViewCell+Helpers.swift in Sources */,
 				0B7F57302BE1A8DA00291197 /* UIColor+Helpers.swift in Sources */,
 				7CE071F12BB79FD10096DC28 /* DateFormatter+Helpers.swift in Sources */,
+				7CF65D532C190345007EE839 /* ScheduleFastestLapCell.swift in Sources */,
 				7C0D22A12BC2A6C5003486DC /* ScheduleDetailController.swift in Sources */,
 				0B19F7272BE58A22006ECE82 /* TeamsViewController.swift in Sources */,
 				7CE071DC2BB7981C0096DC28 /* BaseCollectionView.swift in Sources */,

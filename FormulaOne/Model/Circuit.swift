@@ -32,7 +32,7 @@ struct CircuitR: Decodable {
    let firstGrandPrix, laps: Int
    let length, raceDistance: String
    let lapRecord: LapRecord?
-   let capacity, opened: Int
+   let capacity, opened: Int?
    let owner: String?
    
    enum CodingKeys: String, CodingKey {
@@ -86,7 +86,7 @@ struct CircuitLocation: Decodable {
 
 // MARK: - LapRecord
 struct LapRecord: Decodable {
-   let time, driver, year: String
+   let time, driver, year: String?
    
    init(time: String?, driver: String?, year: String?) {
       self.time = time ?? ""

@@ -6,6 +6,6 @@ target 'FormulaOne' do
   use_frameworks!
 
   # Pods for FormulaOne
-    pod 'SDWebImage'
+    
 
 end

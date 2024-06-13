@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+//import SDWebImage
 
 
 class DriverDetailViewController: BaseCollectionView, UICollectionViewDelegateFlowLayout {
@@ -97,7 +97,7 @@ class DriverDetailViewController: BaseCollectionView, UICollectionViewDelegateFl
             cell.backgroundColor = color
          }
          let url = URL(string: detailDriver[indexPath.item].image ?? "")
-         cell.image.sd_setImage(with: url)
+         //cell.image.sd_setImage(with: url)
          cell.nameLabel.text = detailDriver[indexPath.item].name
          cell.nationalityLabel.text = detailDriver[indexPath.item].nationality
       }
