@@ -82,13 +82,13 @@ class ScheduleDetailController: UICollectionViewController {
             self?.scheduleCompetition = result.response ?? []
             // MARK: - Ordenamiento del calendario
             /*self?.scheduleCompetition.sort { event1, event2 in
-                let desiredOrder: [TypeEnum] = [.the1StPractice, .the2NdPractice, .the3RDPractice, .the1StQualifying, .the2NdQualifying, .the3RDQualifying, .race]
-                guard let index1 = desiredOrder.firstIndex(of: event1.type ?? .race),
-                      let index2 = desiredOrder.firstIndex(of: event2.type ?? .race) else {
-                    return false
-                }
-                return index1 < index2
-            }*/
+             let desiredOrder: [TypeEnum] = [.the1StPractice, .the2NdPractice, .the3RDPractice, .the1StQualifying, .the2NdQualifying, .the3RDQualifying, .race]
+             guard let index1 = desiredOrder.firstIndex(of: event1.type ?? .race),
+             let index2 = desiredOrder.firstIndex(of: event2.type ?? .race) else {
+             return false
+             }
+             return index1 < index2
+             }*/
             dispathGroup.leave()
         }
         
@@ -107,9 +107,7 @@ class ScheduleDetailController: UICollectionViewController {
     }
     
     static func createLayout() -> UICollectionViewCompositionalLayout {
-        
-        return UICollectionViewCompositionalLayout { (sectionNumber, env) ->
-            NSCollectionLayoutSection? in
+        return UICollectionViewCompositionalLayout { (sectionIndex, env) -> NSCollectionLayoutSection? in
             
             let headerItem = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
@@ -117,52 +115,25 @@ class ScheduleDetailController: UICollectionViewController {
             )
             
             headerItem.pinToVisibleBounds = true
+            headerItem.contentInsets.leading = 12
             
+            guard let section = Section(rawValue: sectionIndex) else {
+                return nil
+            }
             
-            if sectionNumber == 0 {
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-                item.contentInsets.trailing = 8
-                item.contentInsets.leading = 8
-                
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(90)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                return section
-                
-            } else if sectionNumber == 1 {
-                
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(90)))
-                item.contentInsets.trailing = 8
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets.top = 14
-                section.contentInsets.leading = 8
-                section.orthogonalScrollingBehavior = .paging
-                section.boundarySupplementaryItems = [headerItem]
-
-                return section
-            } else if sectionNumber == 2 {
-                
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(190)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets.top = 14
-                section.contentInsets.leading = 8
-                section.contentInsets.trailing = 8
-                section.boundarySupplementaryItems = [headerItem]
-
-                return section
-            } else {
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(90)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets.top = 14
-                section.contentInsets.leading = 8
-                section.contentInsets.trailing = 8
-                section.boundarySupplementaryItems = [headerItem]
-                return section
+            switch section {
+            case .header:
+                return NSCollectionLayoutSection.sideOneItem(headerItem: headerItem)
+            case .schedule:
+                return NSCollectionLayoutSection.sideScrollingOneItem(headerItem: headerItem)
+            case .about:
+                return NSCollectionLayoutSection.stackViewWithSixItems(headerItem: headerItem)
+            case .fastestLap:
+                return NSCollectionLayoutSection.sideOneItem(headerItem: headerItem)
             }
         }
     }
+
     
     private func configureNavigationItem() {
         
@@ -210,9 +181,9 @@ class ScheduleDetailController: UICollectionViewController {
             //MARK: - Arreglar el porque no pinta las fechas, si la respuesta si las trae
             if indexPath.item < scheduleCompetition.count {
                 let scheduleData = scheduleCompetition[indexPath.item].date
-                    schedule.dateLabel.attributedText = NSAttributedString.setTextBold( formatterDate.convertDateFormat(inputDate: scheduleData) ?? "Des", fontSize: 18)
+                schedule.dateLabel.attributedText = NSAttributedString.setTextBold( formatterDate.convertDateFormat(inputDate: scheduleData ?? "") ?? "Des", fontSize: 18)
                 
-
+                
             }
             return schedule
             

@@ -37,10 +37,6 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
       constraint()
       fetchDataScheduleRace()
       
-      let now = Date()
-      let calendar = Calendar.current
-      let year = calendar.component(.year, from: now)
-      
       
       /*guard let url = URL(string:  "https://v1.formula-1.api-sports.io/circuits?id=19") else { return }
        //https://v1.formula-1.api-sports.io/races?season=2024&competition=2
@@ -134,7 +130,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
             let uppercasedText = schedule[indexPath.item].competition?.location?.country
             cell.locationCircuitLabel.text = uppercasedText?.uppercased()
             cell.nameCircuitLabel.text = schedule[indexPath.item].circuit?.name
-            cell.dateLabel.text = formatterDate.convertDateFormat(inputDate: schedule[indexPath.item].date ?? "")
+            cell.dateLabel.text = formatterDate.convertDateFormat(inputDate: schedule[indexPath.item].date ?? "Des")
          } else { cell.countryImage.image = UIImage(systemName: "flag f1") }
          
       }

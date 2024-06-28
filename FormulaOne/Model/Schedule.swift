@@ -38,7 +38,7 @@ struct Response: Decodable {
     let fastestLap: FastestLap?
     let distance: String?
     let timezone: Timezone?
-    let date: String
+    let date: String?
     let status: Status?
     let position: Int?
     let driver: Driver?
@@ -48,25 +48,6 @@ struct Response: Decodable {
     let wins: Int?
     let behind: Int?
     
-    init(id: Int, competition: Competition?, circuit: Circuit?, season: Int?, type: TypeEnum?, laps: Laps?, fastestLap: FastestLap?, distance: String?, timezone: Timezone?, date: String?, status: Status?, position: Int?, driver: Driver?, team: Team?, points: Int?, wins: Int?, behind: Int?) {
-        self.id = id
-        self.competition = competition
-        self.circuit = circuit
-        self.season = season ?? 0
-        self.type = type
-        self.laps = laps
-        self.fastestLap = fastestLap
-        self.distance = distance
-        self.timezone = timezone
-        self.date = date ?? "Desc"
-        self.status = status
-        self.position = position
-        self.driver = driver
-        self.team = team
-        self.points = points
-        self.wins = wins
-        self.behind = behind
-    }
     
 }
 
