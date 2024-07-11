@@ -17,7 +17,7 @@ extension NSCollectionLayoutSection {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(90)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets.leading = 8
-        section.contentInsets.top = 14
+        section.contentInsets.top = 8
         section.boundarySupplementaryItems = [headerItem]
 
         return section
@@ -26,7 +26,7 @@ extension NSCollectionLayoutSection {
     static func sideScrollingOneItem(headerItem: NSCollectionLayoutBoundarySupplementaryItem) -> NSCollectionLayoutSection {
         
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(90)))
-        item.contentInsets.trailing = 8
+        item.contentInsets.trailing = 14
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets.top = 14

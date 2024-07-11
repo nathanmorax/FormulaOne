@@ -46,6 +46,9 @@
 		7CE41FBF2BBA1F7F00DDE7FF /* RacingDriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE41FBE2BBA1F7F00DDE7FF /* RacingDriverCell.swift */; };
 		7CF65D532C190345007EE839 /* ScheduleFastestLapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF65D522C190345007EE839 /* ScheduleFastestLapCell.swift */; };
 		7CF65D552C19885B007EE839 /* ReusableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF65D542C19885B007EE839 /* ReusableHeaderView.swift */; };
+		BA8139492C3F37CB00D5AE80 /* ChampionshipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8139482C3F37CB00D5AE80 /* ChampionshipCell.swift */; };
+		BA81394B2C3F38CF00D5AE80 /* TeamsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA81394A2C3F38CF00D5AE80 /* TeamsCell.swift */; };
+		BA81394D2C3F397700D5AE80 /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA81394C2C3F397700D5AE80 /* AboutCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +94,9 @@
 		7CF65D522C190345007EE839 /* ScheduleFastestLapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFastestLapCell.swift; sourceTree = "<group>"; };
 		7CF65D542C19885B007EE839 /* ReusableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableHeaderView.swift; sourceTree = "<group>"; };
 		AE2A5309CEBE4D82A85ADE78 /* Pods-FormulaOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormulaOne.debug.xcconfig"; path = "Target Support Files/Pods-FormulaOne/Pods-FormulaOne.debug.xcconfig"; sourceTree = "<group>"; };
+		BA8139482C3F37CB00D5AE80 /* ChampionshipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionshipCell.swift; sourceTree = "<group>"; };
+		BA81394A2C3F38CF00D5AE80 /* TeamsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsCell.swift; sourceTree = "<group>"; };
+		BA81394C2C3F397700D5AE80 /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		DF334A89CB28845D22AAB9A2 /* Pods_FormulaOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormulaOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -286,6 +292,9 @@
 			children = (
 				7CE41FBE2BBA1F7F00DDE7FF /* RacingDriverCell.swift */,
 				0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */,
+				BA8139482C3F37CB00D5AE80 /* ChampionshipCell.swift */,
+				BA81394A2C3F38CF00D5AE80 /* TeamsCell.swift */,
+				BA81394C2C3F397700D5AE80 /* AboutCell.swift */,
 			);
 			path = RacingDriver;
 			sourceTree = "<group>";
@@ -406,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA230872BC3DAA0000C252A /* ScheduleDetailHeaderCell.swift in Sources */,
+				BA81394D2C3F397700D5AE80 /* AboutCell.swift in Sources */,
 				7CE071F32BB7A3690096DC28 /* UIFont+Helpers.swift in Sources */,
 				0B563C912BEEB63800D076C3 /* ScheduleAboutCell.swift in Sources */,
 				0BC20E742BC630060054BC2E /* DriverHeaderCell.swift in Sources */,
@@ -417,6 +427,7 @@
 				7CE071DE2BB798630096DC28 /* ScheduleViewController.swift in Sources */,
 				0B7F573E2BE47B9500291197 /* UINavigationBar+Helpers.swift in Sources */,
 				7CE071EA2BB79A040096DC28 /* ScheduleCell.swift in Sources */,
+				BA8139492C3F37CB00D5AE80 /* ChampionshipCell.swift in Sources */,
 				7CE071F82BB88CDD0096DC28 /* ScheduleDetailCell.swift in Sources */,
 				7CE071C82BB797350096DC28 /* SceneDelegate.swift in Sources */,
 				7CE071E12BB798D00096DC28 /* Schedule.swift in Sources */,
@@ -436,6 +447,7 @@
 				7CE071F12BB79FD10096DC28 /* DateFormatter+Helpers.swift in Sources */,
 				7CF65D532C190345007EE839 /* ScheduleFastestLapCell.swift in Sources */,
 				7C0D22A12BC2A6C5003486DC /* ScheduleDetailController.swift in Sources */,
+				BA81394B2C3F38CF00D5AE80 /* TeamsCell.swift in Sources */,
 				0B19F7272BE58A22006ECE82 /* TeamsViewController.swift in Sources */,
 				7CE071DC2BB7981C0096DC28 /* BaseCollectionView.swift in Sources */,
 				0BC20E722BC61AB90054BC2E /* DriverDetailViewController.swift in Sources */,

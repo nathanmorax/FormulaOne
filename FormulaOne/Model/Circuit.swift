@@ -94,3 +94,19 @@ struct LapRecord: Decodable {
       self.year = year ?? ""
    }
 }
+// MARK: - Headers para cada seccion
+enum SectionDriver: Int, CaseIterable {
+    case header
+    case championshipStanding
+    case team
+    case about
+    
+    var title: String {
+        switch self {
+        case .header: return ""
+        case .championshipStanding: return "Championship Standing"
+        case .team: return "Teams"
+        case .about: return "About"
+        }
+    }
+}

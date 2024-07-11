@@ -30,12 +30,14 @@ class ScheduleFastestLapCell: UICollectionViewCell {
         
         contentView.backgroundColor = .systemGray5
         
-        driverLabel.font = UIFont.customFontSubtitle(ofSize: 12)
+        driverLabel.font = UIFont.customFontSubtitle(ofSize: 16)
         timeFastestDriverLabel.font = UIFont.customFontSubtitle(ofSize: 10)
         yearTimeFastestLabel.font = UIFont.customFontSubtitle(ofSize: 9)
         
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        stackView.alignment = .center
         
     }
     

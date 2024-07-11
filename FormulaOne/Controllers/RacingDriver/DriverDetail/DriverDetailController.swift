@@ -10,15 +10,21 @@ import SwiftUI
 
 class DriverDetailController: UICollectionViewController {
     
-    let cellId = "id"
+    var detailDriver: Response?
+    lazy var driversDetails = [Drivers]()
+    private var driverId: Int
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         constraint()
+        fetchData()
     }
     
-    init() {
+    init(driverId: Int) {
+        self.driverId = driverId
+        
         super.init(collectionViewLayout: DriverDetailController.createLayout())
     }
     
@@ -29,9 +35,12 @@ class DriverDetailController: UICollectionViewController {
     private func configure() {
         
         view.backgroundColor = .systemBackground
-
         
-        collectionView.register(HeaderCollectionCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(DriverHeaderCell.self, forCellWithReuseIdentifier: DriverHeaderCell.driverHeaderCellId)
+        collectionView.register(ChampionshipCell.self, forCellWithReuseIdentifier: ChampionshipCell.championshipCellId)
+        collectionView.register(TeamsCell.self, forCellWithReuseIdentifier: TeamsCell.teamsCellId)
+        collectionView.register(AboutCell.self, forCellWithReuseIdentifier: AboutCell.aboutCellId)
+        collectionView.register(ReusableHeaderView.self, forSupplementaryViewOfKind: ScheduleDetailController.ScheduleDetailHeaderId, withReuseIdentifier: ReusableHeaderView.headerId)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -52,34 +61,50 @@ class DriverDetailController: UICollectionViewController {
         
     }
     
+    private func fetchData() {
+        
+        
+        APIService.shared.fetchDriver(driverId: driverId) { result , error in
+            guard let result, error == nil else { return }
+            
+            self.driversDetails = result.response ?? []
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     
     
     static func createLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionNumber, env) ->
-        NSCollectionLayoutSection? in
+            NSCollectionLayoutSection? in
             
-            if sectionNumber == 0 {
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+            let headerItem = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)),
+                elementKind: ScheduleDetailController.ScheduleDetailHeaderId, alignment: .top
+            )
+            
+            headerItem.pinToVisibleBounds = true
+            headerItem.contentInsets.leading = 16
+            headerItem.contentInsets.top = -18
+            
+            guard let sectionType = SectionDriver(rawValue: sectionNumber) else { return nil }
+
+            
+            switch sectionType {
                 
-                item.contentInsets.trailing = 8
-                item.contentInsets.leading = 8
+            case .header:
+                return NSCollectionLayoutSection.sideOneItem(headerItem: headerItem)
+            case .championshipStanding:
+                return NSCollectionLayoutSection.sideOneItem(headerItem: headerItem)
+            case .team:
                 
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(180)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
+                return NSCollectionLayoutSection.sideScrollingOneItem(headerItem: headerItem)
+            case .about:
                 
-                
-                return section
-            } else {
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-                
-                
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(190)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets.top = 14
-                section.contentInsets.leading = 8
-                section.contentInsets.trailing = 8
-                
-                return section
+                return NSCollectionLayoutSection.sideOneItem(headerItem: headerItem)
             }
             
         }
@@ -87,115 +112,166 @@ class DriverDetailController: UICollectionViewController {
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return SectionDriver.allCases.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        switch section {
-        case 0: return 1
-        default: return 0
+        guard let sectionType = SectionDriver(rawValue: section) else { return 0 }
+        
+        switch sectionType {
+        case .header: return 1
+        case .championshipStanding: return 1
+        case .team: return 6
+        case .about: return 1
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        //cell.backgroundColor = .cyan
         
-        return cell
-    }
-    
-}
-
-class HeaderCollectionCell: UICollectionViewCell {
-    
-    let imageDriver = UIImageView()
-    let stackView = UIStackView()
-    let nameLabel = UILabel()
-    let countryLabel = UILabel()
-    let imageLocation = UIImageView()
-    let teamLabel = UILabel()
-    let separator = UIView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-        constraint()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func configure() {
+        let sectionType = SectionDriver(rawValue: indexPath.section)
         
-        imageDriver.image = UIImage(named: "driver")
-        imageDriver.backgroundColor = .systemPink
-        imageDriver.layer.cornerRadius = 4
-        imageDriver.layer.borderColor = UIColor.black.cgColor
-        imageDriver.layer.borderWidth = 2
-        
-        nameLabel.text = "Sergio Michel Pérez Mendoza"
-        nameLabel.font = UIFont.customFontTitle(ofSize: 14)
-        nameLabel.numberOfLines = 0
-        
-        countryLabel.text = "Mexico"
-        countryLabel.font = UIFont.customFontSubtitle(ofSize: 14)
-        
-        imageLocation.image = UIImage(systemName: "mappin.and.ellipse")
-        imageLocation.tintColor = .black
-        
-        teamLabel.text = "Red Bull Racing"
-        teamLabel.font = UIFont.customFontSubtitle(ofSize: 14)
-
-        stackView.axis = .horizontal
-        stackView.spacing = 10
-        
-        separator.backgroundColor = .black
-        
-    }
-    
-    private func constraint() {
-        
-        addSubviews(imageDriver, nameLabel, stackView)
-        stackView.addArrangedSubviews(countryLabel, imageLocation, separator, teamLabel)
-        
-        
-        for views in [imageDriver, nameLabel, stackView] {
-           views.translatesAutoresizingMaskIntoConstraints = false
+        switch sectionType {
+        case .header:
+            guard let headerCell = collectionView.dequeueReusableCell(withReuseIdentifier: DriverHeaderCell.driverHeaderCellId, for: indexPath) as? DriverHeaderCell else { fatalError("Error al configurar la celda tipo") }
+            
+            /*if let color = teamColor.first(where: { $0.name ==
+             detailDriver[indexPath.item].teams?[indexPath.item].team?.name
+             })?.color {
+             cell.backgroundColor = color
+             }*/
+            //let url = URL(string: detailDriver[indexPath.item].image ?? "")
+            //cell.image.sd_setImage(with: url)
+            headerCell.nameLabel.text = detailDriver?.driver?.name
+            
+            if indexPath.item < driversDetails.count {
+                headerCell.countryLabel.text = driversDetails[indexPath.item].country?.name
+                
+            }
+            return headerCell
+            
+        case .championshipStanding:
+            
+            guard let championshipCell = collectionView.dequeueReusableCell(withReuseIdentifier: ChampionshipCell.championshipCellId, for: indexPath) as? ChampionshipCell else { fatalError("Error al configurar la celda tipo") }
+            
+            championshipCell.backgroundColor = .blue
+            
+            return championshipCell
+            
+        case .team:
+            
+            guard let teamsCell = collectionView.dequeueReusableCell(withReuseIdentifier: TeamsCell.teamsCellId, for: indexPath) as? TeamsCell else { fatalError("Error al configurar la celda tipo") }
+            
+            teamsCell.backgroundColor = .blue
+            
+            return teamsCell
+            
+        case .about:
+            
+            guard let aboutCell = collectionView.dequeueReusableCell(withReuseIdentifier: AboutCell.aboutCellId, for: indexPath) as? AboutCell else { fatalError("Error al configurar la celda tipo") }
+            
+            aboutCell.backgroundColor = .blue
+            
+            return aboutCell
+            
+        default:
+            return UICollectionViewCell()
         }
         
-        NSLayoutConstraint.activate([
-            imageDriver.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageDriver.topAnchor.constraint(equalTo: self.topAnchor),
-            imageDriver.heightAnchor.constraint(equalToConstant: 100),
-            imageDriver.widthAnchor.constraint(equalToConstant: 100),
+    }
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReusableHeaderView.headerId, for: indexPath) as? ReusableHeaderView else { fatalError("Error al configurar la celda tipo") }
+        
+        if let sectionType = SectionDriver(rawValue: indexPath.section) {
+            cell.titleLabel.attributedText = NSAttributedString.setTextGray(sectionType.title, fontSize: 14)
             
-            nameLabel.topAnchor.constraint(equalTo: imageDriver.bottomAnchor, constant: 12),
-            nameLabel.centerXAnchor.constraint(equalTo: imageDriver.centerXAnchor),
-            
-            stackView.centerXAnchor.constraint(equalTo: nameLabel.centerXAnchor),
-            stackView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            
-            imageLocation.heightAnchor.constraint(equalToConstant: 15),
-            imageLocation.widthAnchor.constraint(equalToConstant: 15),
-            
-            separator.heightAnchor.constraint(equalToConstant: 20),
-            separator.widthAnchor.constraint(equalToConstant: 1)
-
-        ])
+        }
+        return cell
         
     }
     
 }
+
+/*class HeaderCollectionCell: UICollectionViewCell {
+ 
+ let imageDriver = UIImageView()
+ let stackView = UIStackView()
+ let nameLabel = UILabel()
+ let countryLabel = UILabel()
+ let imageLocation = UIImageView()
+ let teamLabel = UILabel()
+ let separator = UIView()
+ 
+ override init(frame: CGRect) {
+ super.init(frame: frame)
+ configure()
+ constraint()
+ }
+ 
+ required init?(coder: NSCoder) {
+ fatalError("init(coder:) has not been implemented")
+ }
+ 
+ private func configure() {
+ 
+ imageDriver.image = UIImage(named: "driver")
+ imageDriver.backgroundColor = .systemPink
+ imageDriver.layer.cornerRadius = 4
+ imageDriver.layer.borderColor = UIColor.black.cgColor
+ imageDriver.layer.borderWidth = 2
+ 
+ nameLabel.text = "Sergio Michel Pérez Mendoza"
+ nameLabel.font = UIFont.customFontTitle(ofSize: 14)
+ nameLabel.numberOfLines = 0
+ 
+ imageLocation.image = UIImage(systemName: "mappin.and.ellipse")
+ imageLocation.tintColor = .black
+ 
+ teamLabel.text = "Red Bull Racing"
+ teamLabel.font = UIFont.customFontSubtitle(ofSize: 14)
+ 
+ stackView.axis = .vertical
+ stackView.spacing = 10
+ 
+ separator.backgroundColor = .black
+ 
+ }
+ 
+ private func constraint() {
+ 
+ stackView.addArrangedSubviews(nameLabel, teamLabel)
+ addSubviews(stackView, imageDriver)
+ 
+ 
+ for views in [stackView, imageDriver] {
+ views.translatesAutoresizingMaskIntoConstraints = false
+ }
+ 
+ NSLayoutConstraint.activate([
+ 
+ stackView.centerYAnchor.constraint(equalTo: imageDriver.centerYAnchor),
+ stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
+ 
+ imageDriver.heightAnchor.constraint(equalToConstant: 100),
+ imageDriver.widthAnchor.constraint(equalToConstant: 100),
+ imageDriver.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12)
+ 
+ 
+ 
+ ])
+ 
+ }
+ 
+ }*/
 
 
 struct DriverDetailController_Previews: UIViewControllerRepresentable {
     typealias UIViewControllerType = DriverDetailController
-
+    
     func makeUIViewController(context: Context) -> DriverDetailController {
-        DriverDetailController()
+        DriverDetailController(driverId: 2)
     }
     
     func updateUIViewController(_ uiViewController: DriverDetailController, context: Context) {
