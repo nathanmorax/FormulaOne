@@ -78,7 +78,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
       view.backgroundColor = .secondarySystemBackground
       
       collectionView.backgroundColor = .clear
-      collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: ScheduleCell.reuseID)
+       collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: ScheduleCell.scheduleCellId)
       collectionView.delegate = self
       collectionView.dataSource = self
       collectionView.showsVerticalScrollIndicator = false
@@ -116,7 +116,7 @@ class ScheduleViewController: BaseCollectionView, UICollectionViewDelegateFlowLa
    }
    
    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleCell.reuseID, for: indexPath)
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleCell.scheduleCellId, for: indexPath)
       if let cell = cell as? ScheduleCell {
          
          

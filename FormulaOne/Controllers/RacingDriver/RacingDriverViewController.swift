@@ -10,7 +10,6 @@ import UIKit
 class RacingDriverViewController: UIViewController  {
     
     var tableView = UITableView(frame: .zero)
-    let tableViewcell = "id"
     var driver = [Response]()
     
     override func viewDidLoad() {
@@ -36,7 +35,7 @@ class RacingDriverViewController: UIViewController  {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 120
         
-        tableView.register(RacingDriverCell.self, forCellReuseIdentifier: tableViewcell)
+        tableView.register(RacingDriverCell.self, forCellReuseIdentifier: RacingDriverCell.racingDriverCellId)
         
     }
     
@@ -73,7 +72,7 @@ extension RacingDriverViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewcell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: RacingDriverCell.racingDriverCellId, for: indexPath)
         if let cell = cell as? RacingDriverCell {
             
             /*if let color = teamColor.first(where: { $0.name ==
@@ -92,9 +91,10 @@ extension RacingDriverViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         
-        let driverId = driver[indexPath.row].driver?.id ?? 0
-        print("ID:: ", driverId)
+        let driverSelected = driver[indexPath.row]
+        let driverId = driverSelected.driver?.id ?? 0
         let viewController = DriverDetailController(driverId: driverId)
+        viewController.detailDriver = driverSelected
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true, completion: nil)
         //navigationController?.pushViewController(viewController, animated: true)

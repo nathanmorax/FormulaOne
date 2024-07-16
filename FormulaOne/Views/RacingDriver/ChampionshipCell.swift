@@ -10,6 +10,8 @@ import UIKit
 class ChampionshipCell: UICollectionViewCell {
     static let championshipCellId = "championshipCellId"
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

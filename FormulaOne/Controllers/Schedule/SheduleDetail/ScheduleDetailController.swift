@@ -172,6 +172,7 @@ class ScheduleDetailController: UICollectionViewController {
             guard let headerCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleDetailHeaderCell.scheduleHeaderId, for: indexPath) as? ScheduleDetailHeaderCell else { fatalError("Error al configurar la celda tipo") }
             
             headerCell.circuitLabel.text = sheduleDetail?.circuit?.name
+            print("Namee>>>>>", sheduleDetail?.circuit?.name)
             headerCell.countryLabel.text = sheduleDetail?.competition?.location?.country
             headerCell.cityLabel.text = sheduleDetail?.competition?.location?.city
             

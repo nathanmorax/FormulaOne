@@ -8,7 +8,7 @@
 import UIKit
 
 class AboutCell: UICollectionViewCell {
-    static let aboutCellId = "aboutCellIdj"
+    static let aboutCellId = "aboutCellId"
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -8,7 +8,7 @@
 import UIKit
 
 class RacingDriverCell: UITableViewCell {
-   
+   static let racingDriverCellId = "RacingDriverCellId"
    let stack = UIStackView()
    let positionDriverLabel = UILabel()
    let view = UIView()

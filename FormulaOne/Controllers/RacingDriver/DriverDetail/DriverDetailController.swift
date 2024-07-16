@@ -20,6 +20,7 @@ class DriverDetailController: UICollectionViewController {
         configure()
         constraint()
         fetchData()
+        
     }
     
     init(driverId: Int) {
@@ -64,13 +65,13 @@ class DriverDetailController: UICollectionViewController {
     private func fetchData() {
         
         
-        APIService.shared.fetchDriver(driverId: driverId) { result , error in
+        APIService.shared.fetchDriver(driverId: driverId) {[weak self] result , error in
             guard let result, error == nil else { return }
             
-            self.driversDetails = result.response ?? []
+            self?.driversDetails = result.response ?? []
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self?.collectionView.reloadData()
             }
         }
     }
@@ -91,7 +92,7 @@ class DriverDetailController: UICollectionViewController {
             headerItem.contentInsets.top = -18
             
             guard let sectionType = SectionDriver(rawValue: sectionNumber) else { return nil }
-
+            
             
             switch sectionType {
                 
@@ -136,19 +137,20 @@ class DriverDetailController: UICollectionViewController {
         case .header:
             guard let headerCell = collectionView.dequeueReusableCell(withReuseIdentifier: DriverHeaderCell.driverHeaderCellId, for: indexPath) as? DriverHeaderCell else { fatalError("Error al configurar la celda tipo") }
             
-            /*if let color = teamColor.first(where: { $0.name ==
-             detailDriver[indexPath.item].teams?[indexPath.item].team?.name
-             })?.color {
-             cell.backgroundColor = color
-             }*/
             //let url = URL(string: detailDriver[indexPath.item].image ?? "")
             //cell.image.sd_setImage(with: url)
             headerCell.nameLabel.text = detailDriver?.driver?.name
+            headerCell.teamLabel.text = detailDriver?.team?.name
             
-            if indexPath.item < driversDetails.count {
-                headerCell.countryLabel.text = driversDetails[indexPath.item].country?.name
-                
+            if let positionDescription = detailDriver?.position?.description, let position = Int(positionDescription) {
+                headerCell.positionLabel.text = getAbbreviatedPosition(from: position)
+            } else {
+                headerCell.positionLabel.text = ""
             }
+            
+            headerCell.pointsLabel.text = "\(detailDriver?.points?.description ?? "") pts"
+            
+            
             return headerCell
             
         case .championshipStanding:
@@ -190,6 +192,30 @@ class DriverDetailController: UICollectionViewController {
         }
         return cell
         
+    }
+    
+    func getAbbreviatedPosition(from position: Int) -> String {
+        let suffix: String
+        let lastTwoDigits = position % 100
+        let lastDigit = position % 10
+        
+        switch lastTwoDigits {
+        case 11, 12, 13:
+            suffix = "th"
+        default:
+            switch lastDigit {
+            case 1:
+                suffix = "st"
+            case 2:
+                suffix = "nd"
+            case 3:
+                suffix = "rd"
+            default:
+                suffix = "th"
+            }
+        }
+        
+        return "\(position)\(suffix)"
     }
     
 }
@@ -271,7 +297,7 @@ struct DriverDetailController_Previews: UIViewControllerRepresentable {
     typealias UIViewControllerType = DriverDetailController
     
     func makeUIViewController(context: Context) -> DriverDetailController {
-        DriverDetailController(driverId: 2)
+        DriverDetailController(driverId: 24)
     }
     
     func updateUIViewController(_ uiViewController: DriverDetailController, context: Context) {

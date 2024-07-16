@@ -10,6 +10,8 @@ import UIKit
 class TeamsCell: UICollectionViewCell {
     static let teamsCellId = "TeamsCellId"
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

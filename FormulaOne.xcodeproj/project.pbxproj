@@ -18,7 +18,6 @@
 		0B7F573E2BE47B9500291197 /* UINavigationBar+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F573D2BE47B9500291197 /* UINavigationBar+Helpers.swift */; };
 		0B7F57402BE497C000291197 /* UILabel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F573F2BE497C000291197 /* UILabel+Helpers.swift */; };
 		0BAB080D2BF2E85A00A392DE /* Circuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB080C2BF2E85A00A392DE /* Circuit.swift */; };
-		0BC20E722BC61AB90054BC2E /* DriverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */; };
 		0BC20E742BC630060054BC2E /* DriverHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */; };
 		0BE82FA12BC6447A00723155 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE82FA02BC6447A00723155 /* Driver.swift */; };
 		0BF2A8DB2BE849120084780E /* UIBarButtonItem+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2A8DA2BE849120084780E /* UIBarButtonItem+Helpers.swift */; };
@@ -63,7 +62,6 @@
 		0B7F573D2BE47B9500291197 /* UINavigationBar+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Helpers.swift"; sourceTree = "<group>"; };
 		0B7F573F2BE497C000291197 /* UILabel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Helpers.swift"; sourceTree = "<group>"; };
 		0BAB080C2BF2E85A00A392DE /* Circuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circuit.swift; sourceTree = "<group>"; };
-		0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailViewController.swift; sourceTree = "<group>"; };
 		0BC20E732BC630060054BC2E /* DriverHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverHeaderCell.swift; sourceTree = "<group>"; };
 		0BE82FA02BC6447A00723155 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		0BF2A8DA2BE849120084780E /* UIBarButtonItem+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Helpers.swift"; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 		0BC20E702BC61A590054BC2E /* DriverDetail */ = {
 			isa = PBXGroup;
 			children = (
-				0BC20E712BC61AB90054BC2E /* DriverDetailViewController.swift */,
 				7C1E1B182C15244300B4C1B0 /* DriverDetailController.swift */,
 			);
 			path = DriverDetail;
@@ -450,7 +447,6 @@
 				BA81394B2C3F38CF00D5AE80 /* TeamsCell.swift in Sources */,
 				0B19F7272BE58A22006ECE82 /* TeamsViewController.swift in Sources */,
 				7CE071DC2BB7981C0096DC28 /* BaseCollectionView.swift in Sources */,
-				0BC20E722BC61AB90054BC2E /* DriverDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

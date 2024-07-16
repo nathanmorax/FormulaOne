@@ -10,12 +10,15 @@ import UIKit
 class DriverHeaderCell: UICollectionViewCell {
     static let driverHeaderCellId = "driverHeaderCellId"
     
+    let vstackView = UIStackView()
+    let hstackView = UIStackView()
+
     let imageDriver = UIImageView()
-    let stackView = UIStackView()
     let nameLabel = UILabel()
     let countryLabel = UILabel()
-    let imageLocation = UIImageView()
     let teamLabel = UILabel()
+    let positionLabel = UILabel()
+    let pointsLabel = UILabel()
     let separator = UIView()
     
     override init(frame: CGRect) {
@@ -36,33 +39,41 @@ class DriverHeaderCell: UICollectionViewCell {
         imageDriver.layer.borderColor = UIColor.black.cgColor
         imageDriver.layer.borderWidth = 2
         
-        //nameLabel.text = "Sergio Michel Pérez Mendoza"
-        nameLabel.font = UIFont.customFontTitle(ofSize: 14)
+        nameLabel.font = UIFont.customFontTitle(ofSize: 19)
         nameLabel.numberOfLines = 0
         
-        //teamLabel.text = "Red Bull Racing"
-        teamLabel.font = UIFont.customFontSubtitle(ofSize: 14)
+        teamLabel.text = "Red Bull Racing"
+        teamLabel.font = UIFont.customFontSubtitle(ofSize: 18)
         
-        stackView.axis = .vertical
-        stackView.spacing = 10
+        positionLabel.text = "6"
+        positionLabel.font = UIFont.customFontSubtitle(ofSize: 28)
+        
+        pointsLabel.text = "118"
+        pointsLabel.font = UIFont.customFontSubtitle(ofSize: 28)
+        
+        vstackView.axis = .vertical
+        vstackView.spacing = 10
+        
+        hstackView.axis = .horizontal
         
         
     }
     
     private func constraint() {
         
-        stackView.addArrangedSubviews(nameLabel, teamLabel)
-        addSubviews(stackView, imageDriver)
+        hstackView.addArrangedSubviews(positionLabel, pointsLabel)
+        vstackView.addArrangedSubviews(nameLabel, teamLabel, hstackView)
+        addSubviews(vstackView, imageDriver)
         
         
-        for views in [stackView, imageDriver] {
+        for views in [vstackView, imageDriver] {
             views.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
             
-            stackView.centerYAnchor.constraint(equalTo: imageDriver.centerYAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
+            vstackView.centerYAnchor.constraint(equalTo: imageDriver.centerYAnchor),
+            vstackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
             
             imageDriver.heightAnchor.constraint(equalToConstant: 100),
             imageDriver.widthAnchor.constraint(equalToConstant: 100),
